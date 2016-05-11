@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +17,24 @@ namespace FinalProject
 	public partial class Form1 : Form
 	{
 		private int selectRow, selectCol;
-        private string[,] address = new string[2,2];
+		private FormAdd formAdd = new FormAdd();
+        public List<String>[] address=new List<String>[2];
 		public Form1()
 		{
 			InitializeComponent();
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Items.Add("中華民國刑法");
-            comboBox1.Items.Add("中華民國民法");
-            comboBox1.SelectedIndex = 0;
-            address[0, 0] = "中華民國刑法"; address[0, 1] = @"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=C0000001";
-            address[1, 0] = "中華民國民法"; address[1, 1] = @"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=B0000001";
+			for (int i = 0; i < 2; i++)
+			{
+				address[i]=new List<string>();
+			}
+			comboBoxChoice.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxChoice.Items.Add("中華民國刑法");
+            comboBoxChoice.Items.Add("民法");
+            comboBoxChoice.SelectedIndex = 0;
+			// 0 存的是名字， 1 存的是網址
+			address[0].Add("中華民國刑法");
+			address[1].Add(@"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=C0000001");
+			address[0].Add("民法");
+			address[1].Add(@"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=B0000001");
         }
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -45,15 +54,9 @@ namespace FinalProject
 			dataGridView1.Rows.Clear();
             try
             {
-                string tmpadd = "";
-                for (int i = 0; i < 2; i++)
-                {
-                    if (address[i, 0] == comboBox1.SelectedItem.ToString())
-                    {
-                        tmpadd = address[i, 1];
-                    }
-                }
-                WebRequest req = WebRequest.Create(tmpadd);
+				//選擇的法律網址
+				string selectAddress = address[1][address[0].IndexOf(comboBoxChoice.SelectedItem.ToString())];
+                WebRequest req = WebRequest.Create(selectAddress);
                 req.Method = "GET";
                 WebResponse reply = req.GetResponse();
                 StreamReader sw = new StreamReader(reply.GetResponseStream());
@@ -67,7 +70,7 @@ namespace FinalProject
                     if (Regex.IsMatch(match.Groups[2].ToString(), find))
                     {
                         int index = dataGridView1.Rows.Add();
-                        dataGridView1.Rows[index].Cells[0].Value = comboBox1.SelectedItem.ToString();
+                        dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
                         dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
                         dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
                     }
@@ -78,11 +81,13 @@ namespace FinalProject
                     }
                 }
                 sw.Close();
+				req.Abort();
                 reply.Close();
             }
             catch (Exception def)
             {
-                label1.Text = def.ToString();
+				MessageBox.Show("發生例外錯誤：\n錯誤訊息："+def.ToString(), "錯誤訊息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				textSearch.Text = "";
             }
 		}
 
@@ -98,6 +103,19 @@ namespace FinalProject
 		{
 			selectRow = e.RowIndex;
 			selectCol = e.ColumnIndex;
+		}
+
+		private void buttonAdd_Click(object sender, EventArgs e)
+		{
+			formAdd.textAddress.Text = "";
+			formAdd.textName.Text = "";
+			formAdd.ShowDialog();
+			if (formAdd.DialogResult == DialogResult.Yes)
+			{
+				address[0].Add(formAdd.textName.Text);
+				address[1].Add(formAdd.textAddress.Text);
+				comboBoxChoice.Items.Add(formAdd.textName.Text);
+			}
 		}
 	}
 }
