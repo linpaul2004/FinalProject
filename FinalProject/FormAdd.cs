@@ -20,8 +20,9 @@ namespace FinalProject
 			InitializeComponent();
 		}
 
-		private void buttonOK_Click(object sender, EventArgs e)
+		private void buttonAdd_Click(object sender, EventArgs e)
 		{
+			Form1 parent = (Form1)this.Owner;
 			if (String.IsNullOrEmpty(textAddress.Text) == false)
 			{
 				if (Regex.IsMatch(textAddress.Text, "http:\\/\\/law\\.moj\\.gov\\.tw\\/LawClass\\/LawAll\\.aspx\\?PCode=[A-Z][\\d]{7}"))
@@ -30,16 +31,24 @@ namespace FinalProject
 					{
 						buttonAuto.PerformClick();
 					}
-					this.DialogResult = DialogResult.Yes;
+					checkedListBox1.Items.Add(textName.Text);
+					parent.address[0].Add(textName.Text);
+					parent.address[1].Add(textAddress.Text);
+					parent.comboBoxChoice.Items.Add(textName.Text);
 					return;
 				}
 			}
 			MessageBox.Show("輸入的網址不合法", "錯誤訊息");
-			this.DialogResult = DialogResult.None;
+			textAddress.Text = "";
+			textName.Text = "";
 		}
 
 		private void buttonAuto_Click(object sender, EventArgs e)
 		{
+			if (Regex.IsMatch(textAddress.Text, "http:\\/\\/law\\.moj\\.gov\\.tw\\/LawClass\\/LawAll\\.aspx\\?PCode=[A-Z][\\d]{7}") == false)
+			{
+				return;
+			}
 			WebRequest req = WebRequest.Create(textAddress.Text);
 			req.Method = "GET";
 			WebResponse reply = req.GetResponse();
@@ -52,6 +61,28 @@ namespace FinalProject
 			reply.Close();
 			req.Abort();
 			sw.Close();
+		}
+
+		private void FormAdd_Load(object sender, EventArgs e)
+		{
+			Form1 parent = (Form1)this.Owner;
+			checkedListBox1.Items.Clear();
+			for (int i = 2; i < parent.address[0].Count; i++)
+			{
+				checkedListBox1.Items.Add(parent.address[0][i]);
+			}
+		}
+
+		private void buttonDel_Click(object sender, EventArgs e)
+		{
+			Form1 parent = (Form1)this.Owner;
+			while (checkedListBox1.SelectedIndices.Count > 0)
+			{
+				parent.address[0].RemoveAt(checkedListBox1.SelectedIndices[0]);
+				parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
+				parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.SelectedIndices[0]]);
+				checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndices[0]);
+			}
 		}
 	}
 }

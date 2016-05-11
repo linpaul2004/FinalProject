@@ -140,7 +140,7 @@
 			this.buttonAdd.Name = "buttonAdd";
 			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
 			this.buttonAdd.TabIndex = 7;
-			this.buttonAdd.Text = "加入新法";
+			this.buttonAdd.Text = "法律管理";
 			this.buttonAdd.UseVisualStyleBackColor = true;
 			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			// 
@@ -186,9 +186,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Content;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBoxChoice;
 		private System.Windows.Forms.Button buttonAdd;
 		private System.Windows.Forms.Label label1;
+		protected internal System.Windows.Forms.ComboBox comboBoxChoice;
 	}
 }
 
