@@ -16,17 +16,25 @@ namespace FinalProject
 	public partial class Form1 : Form
 	{
 		private int selectRow, selectCol;
-
+        private string[,] address = new string[2,2];
 		public Form1()
 		{
 			InitializeComponent();
-		}
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Items.Add("中華民國刑法");
+            comboBox1.Items.Add("中華民國民法");
+            comboBox1.SelectedIndex = 0;
+            address[0, 0] = "中華民國刑法"; address[0, 1] = @"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=C0000001";
+            address[1, 0] = "中華民國民法"; address[1, 1] = @"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=B0000001";
+        }
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+
 			dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 			dataGridView1.ContextMenuStrip = contextMenuStrip1;
 			selectCol = selectRow = -1;
+
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -35,32 +43,47 @@ namespace FinalProject
 				return;
 			}
 			dataGridView1.Rows.Clear();
-			WebRequest req = WebRequest.Create(@"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=C0000001");
-			req.Method = "GET";
-			WebResponse reply = req.GetResponse();
-			StreamReader sw = new StreamReader(reply.GetResponseStream());
-			String pattern = "<a\\shref=\"LawSingle\\.aspx\\?Pcode=[\\w]+&FLNO=(\\d+-?\\d*)[\\s]+\">[\\s\\S]+?<td ><pre>([\\s\\S]+?)<\\/pre><\\/td>";
-			Regex regex = new Regex(pattern);
-			String result = sw.ReadToEnd();
-			Match match = regex.Match(result);
-			String find = textSearch.Text;
-			while(true)
-			{
-				if (Regex.IsMatch(match.Groups[2].ToString(), find))
-				{
-					int index = dataGridView1.Rows.Add();
-					dataGridView1.Rows[index].Cells[0].Value = "中華民國刑法";
-					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
-					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
-				}
-				match = match.NextMatch();
-				if (String.IsNullOrEmpty(match.ToString()))
-				{
-					break;
-				}
-			}
-			sw.Close();
-			reply.Close();
+            try
+            {
+                string tmpadd = "";
+                for (int i = 0; i < 2; i++)
+                {
+                    if (address[i, 0] == comboBox1.SelectedItem.ToString())
+                    {
+                        tmpadd = address[i, 1];
+                    }
+                }
+                WebRequest req = WebRequest.Create(tmpadd);
+                req.Method = "GET";
+                WebResponse reply = req.GetResponse();
+                StreamReader sw = new StreamReader(reply.GetResponseStream());
+                String pattern = "<a\\shref=\"LawSingle\\.aspx\\?Pcode=[\\w]+&FLNO=(\\d+-?\\d*)[\\s]+\">[\\s\\S]+?<td ><pre>([\\s\\S]+?)<\\/pre><\\/td>";
+                Regex regex = new Regex(pattern);
+                String result = sw.ReadToEnd();
+                Match match = regex.Match(result);
+                String find = textSearch.Text;
+                while (true)
+                {
+                    if (Regex.IsMatch(match.Groups[2].ToString(), find))
+                    {
+                        int index = dataGridView1.Rows.Add();
+                        dataGridView1.Rows[index].Cells[0].Value = comboBox1.SelectedItem.ToString();
+                        dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
+                        dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
+                    }
+                    match = match.NextMatch();
+                    if (String.IsNullOrEmpty(match.ToString()))
+                    {
+                        break;
+                    }
+                }
+                sw.Close();
+                reply.Close();
+            }
+            catch (Exception def)
+            {
+                label1.Text = def.ToString();
+            }
 		}
 
 		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
