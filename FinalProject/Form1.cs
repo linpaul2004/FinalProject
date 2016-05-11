@@ -60,19 +60,19 @@ namespace FinalProject
                 req.Method = "GET";
                 WebResponse reply = req.GetResponse();
                 StreamReader sw = new StreamReader(reply.GetResponseStream());
-                String pattern = "<a\\shref=\"LawSingle\\.aspx\\?Pcode=[\\w]+&FLNO=(\\d+-?\\d*)[\\s]+\">[\\s\\S]+?<td ><pre>([\\s\\S]+?)<\\/pre><\\/td>";
+				String pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
                 Regex regex = new Regex(pattern);
                 String result = sw.ReadToEnd();
                 Match match = regex.Match(result);
                 String find = textSearch.Text;
                 while (true)
                 {
-                    if (Regex.IsMatch(match.Groups[2].ToString(), find))
+                    if (Regex.IsMatch(match.Groups[3].ToString(), find))
                     {
                         int index = dataGridView1.Rows.Add();
                         dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
-                        dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
-                        dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
+                        dataGridView1.Rows[index].Cells[1].Value = match.Groups[2].ToString();
+                        dataGridView1.Rows[index].Cells[2].Value = match.Groups[3].ToString();
                     }
                     match = match.NextMatch();
                     if (String.IsNullOrEmpty(match.ToString()))
