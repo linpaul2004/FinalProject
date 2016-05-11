@@ -52,7 +52,6 @@ namespace FinalProject
 					dataGridView1.Rows[index].Cells[0].Value = "中華民國刑法";
 					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
 					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
-					match = match.NextMatch();
 				}
 				match = match.NextMatch();
 				if (String.IsNullOrEmpty(match.ToString()))
