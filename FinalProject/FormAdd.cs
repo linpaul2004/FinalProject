@@ -68,10 +68,7 @@ namespace FinalProject
 		{
 			Form1 parent = (Form1)this.Owner;
 			checkedListBox1.Items.Clear();
-			for (int i = 2; i < parent.address[0].Count; i++)
-			{
-				checkedListBox1.Items.Add(parent.address[0][i]);
-			}
+			checkedListBox1.Items.AddRange(parent.address[0].ToArray());
 		}
 
 		private void buttonDel_Click(object sender, EventArgs e)

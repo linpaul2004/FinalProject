@@ -41,8 +41,8 @@
 			this.comboBoxChoice = new System.Windows.Forms.ComboBox();
 			this.buttonAdd = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
-			this.離開ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.Reflash = new System.Windows.Forms.Button();
+			this.buttonRefresh = new System.Windows.Forms.Button();
+			this.checkBoxConsistent = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -117,16 +117,15 @@
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyToolStripMenuItem,
-            this.離開ToolStripMenuItem});
+            this.CopyToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(161, 48);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(158, 26);
 			// 
 			// CopyToolStripMenuItem
 			// 
 			this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
 			this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
 			this.CopyToolStripMenuItem.Text = "複製(C)";
 			this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 
@@ -157,29 +156,35 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "搜尋法律：";
 			// 
-			// 離開ToolStripMenuItem
+			// buttonRefresh
 			// 
-			this.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem";
-			this.離開ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-			this.離開ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-			this.離開ToolStripMenuItem.Text = "離開(E)";
+			this.buttonRefresh.Location = new System.Drawing.Point(174, 63);
+			this.buttonRefresh.Name = "buttonRefresh";
+			this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+			this.buttonRefresh.TabIndex = 9;
+			this.buttonRefresh.Text = "刷新";
+			this.buttonRefresh.UseVisualStyleBackColor = true;
+			this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
 			// 
-			// Reflash
+			// checkBoxConsistent
 			// 
-			this.Reflash.Location = new System.Drawing.Point(174, 63);
-			this.Reflash.Name = "Reflash";
-			this.Reflash.Size = new System.Drawing.Size(75, 23);
-			this.Reflash.TabIndex = 9;
-			this.Reflash.Text = "Reflash";
-			this.Reflash.UseVisualStyleBackColor = true;
-			this.Reflash.Click += new System.EventHandler(this.Reflash_Click);
+			this.checkBoxConsistent.AutoSize = true;
+			this.checkBoxConsistent.Checked = true;
+			this.checkBoxConsistent.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxConsistent.Location = new System.Drawing.Point(346, 15);
+			this.checkBoxConsistent.Name = "checkBoxConsistent";
+			this.checkBoxConsistent.Size = new System.Drawing.Size(72, 16);
+			this.checkBoxConsistent.TabIndex = 10;
+			this.checkBoxConsistent.Text = "一致搜尋";
+			this.checkBoxConsistent.UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(603, 384);
-			this.Controls.Add(this.Reflash);
+			this.Controls.Add(this.checkBoxConsistent);
+			this.Controls.Add(this.buttonRefresh);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.comboBoxChoice);
@@ -211,8 +216,8 @@
 		private System.Windows.Forms.Button buttonAdd;
 		private System.Windows.Forms.Label label1;
 		protected internal System.Windows.Forms.ComboBox comboBoxChoice;
-		private System.Windows.Forms.ToolStripMenuItem 離開ToolStripMenuItem;
-		private System.Windows.Forms.Button Reflash;
+		private System.Windows.Forms.Button buttonRefresh;
+		private System.Windows.Forms.CheckBox checkBoxConsistent;
 	}
 }
 

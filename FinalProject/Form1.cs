@@ -19,9 +19,10 @@ namespace FinalProject
 		private int selectRow, selectCol;
 		private FormAdd formAdd = new FormAdd();
 		private string filepath = "../../LAddStore.txt";
+		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
 
-		public void DataStore()
+		protected internal void DataStore()
 		{
 			StreamWriter LAddStore = new StreamWriter(filepath);
 			for (int i = 0; i < comboBoxChoice.Items.Count; i++)
@@ -31,20 +32,7 @@ namespace FinalProject
 			}
 			LAddStore.Flush();
 			LAddStore.Close();
-
-			for(int i = 0; i < comboBoxChoice.Items.Count; i++)
-			{
-				WebRequest req = WebRequest.Create(address[1][i]);
-				req.Method = "GET";
-				WebResponse reply = req.GetResponse();
-				StreamReader sw = new StreamReader(reply.GetResponseStream());
-				string result = sw.ReadToEnd();
-				sw.Close();
-				StreamWriter LConStore = new StreamWriter("../../Law"+ i + ".txt");
-				LConStore.Write(result);
-				LConStore.Flush();
-				LConStore.Close();
-			}
+			this.ReadAddress();
 		}
 
 		private void DataRead()
@@ -96,6 +84,38 @@ namespace FinalProject
 			selectCol = selectRow = -1;
 		}
 
+		private void ReadAddress()
+		{
+			for (int i = 0; i < address[0].Count; i++)
+			{
+				WebRequest req = WebRequest.Create(address[1][i]);
+				req.Method = "GET";
+				WebResponse reply = req.GetResponse();
+				StreamReader sw = new StreamReader(reply.GetResponseStream());
+				Regex regex = new Regex(pattern);
+				String result = sw.ReadToEnd();
+				Match match = regex.Match(result);
+				StreamWriter LConStore = new StreamWriter("../../Law" + i + ".txt");
+				LConStore.WriteLine(address[0][i]);
+				while (true)
+				{
+					LConStore.WriteLine(match.Groups[2].ToString());
+					LConStore.WriteLine(match.Groups[3].ToString().Trim());
+					LConStore.WriteLine(match.Groups[2].ToString());
+					match = match.NextMatch();
+					if (String.IsNullOrEmpty(match.ToString()))
+					{
+						break;
+					}
+				}
+				LConStore.Flush();
+				LConStore.Close();
+				sw.Close();
+				req.Abort();
+				reply.Close();
+			}
+		}
+
 		private void button1_Click(object sender, EventArgs e)
 		{
 			if(String.IsNullOrEmpty(textSearch.Text))
@@ -106,34 +126,49 @@ namespace FinalProject
 			try
 			{
 				//選擇的法律網址
-				string selectAddress = address[1][address[0].IndexOf(comboBoxChoice.SelectedItem.ToString())];
-				WebRequest req = WebRequest.Create(selectAddress);
-				req.Method = "GET";
-				WebResponse reply = req.GetResponse();
-				StreamReader sw = new StreamReader(reply.GetResponseStream());
-				String pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
-				Regex regex = new Regex(pattern);
+				int selectLaw = comboBoxChoice.SelectedIndex;
+				StreamReader sw = new StreamReader("../../Law" + selectLaw + ".txt");
+				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
 				String result = sw.ReadToEnd();
 				Match match = regex.Match(result);
 				String find = textSearch.Text;
 				while (true)
 				{
-					if (Regex.IsMatch(match.Groups[3].ToString(), find))
-					{
-						int index = dataGridView1.Rows.Add();
-						dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
-						dataGridView1.Rows[index].Cells[1].Value = match.Groups[2].ToString();
-						dataGridView1.Rows[index].Cells[2].Value = match.Groups[3].ToString();
-					}
-					match = match.NextMatch();
 					if (String.IsNullOrEmpty(match.ToString()))
 					{
 						break;
 					}
+					if (checkBoxConsistent.Checked)
+					{
+						if (Regex.IsMatch(match.Groups[2].ToString(), textSearch.Text) == false)
+						{
+							match = match.NextMatch();
+							continue;
+						}
+					}
+					else
+					{
+						int i;
+						for (i = 0; i < textSearch.Text.Length; i++)
+						{
+							if (Regex.IsMatch(match.Groups[2].ToString(), textSearch.Text[i].ToString()) == false)
+							{
+								break;
+							}
+						}
+						if (i < textSearch.Text.Length)
+						{
+							match = match.NextMatch();
+							continue;
+						}
+					}
+					int index = dataGridView1.Rows.Add();
+					dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
+					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
+					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
+					match = match.NextMatch();
 				}
 				sw.Close();
-				req.Abort();
-				reply.Close();
 			}
 			catch (Exception def)
 			{
@@ -163,7 +198,7 @@ namespace FinalProject
 			formAdd.ShowDialog(this);
 		}
 
-		private void Reflash_Click(object sender, EventArgs e)
+		private void buttonRefresh_Click(object sender, EventArgs e)
 		{
 			DataStore();
 		}
