@@ -31,6 +31,20 @@ namespace FinalProject
 			}
 			LAddStore.Flush();
 			LAddStore.Close();
+
+			for(int i = 0; i < comboBoxChoice.Items.Count; i++)
+			{
+				WebRequest req = WebRequest.Create(address[1][i]);
+				req.Method = "GET";
+				WebResponse reply = req.GetResponse();
+				StreamReader sw = new StreamReader(reply.GetResponseStream());
+				string result = sw.ReadToEnd();
+				sw.Close();
+				StreamWriter LConStore = new StreamWriter("../../Law"+ i + ".txt");
+				LConStore.Write(result);
+				LConStore.Flush();
+				LConStore.Close();
+			}
 		}
 
 		private void DataRead()
@@ -147,6 +161,11 @@ namespace FinalProject
 			formAdd.textAddress.Text = "";
 			formAdd.textName.Text = "";
 			formAdd.ShowDialog(this);
+		}
+
+		private void Reflash_Click(object sender, EventArgs e)
+		{
+			DataStore();
 		}
 	}
 }
