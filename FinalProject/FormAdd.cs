@@ -35,6 +35,7 @@ namespace FinalProject
 					parent.address[0].Add(textName.Text);
 					parent.address[1].Add(textAddress.Text);
 					parent.comboBoxChoice.Items.Add(textName.Text);
+					parent.DataStore();
 					return;
 				}
 			}
@@ -82,6 +83,7 @@ namespace FinalProject
 				parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
 				parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.SelectedIndices[0]]);
 				checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndices[0]);
+				parent.DataStore();
 			}
 		}
 	}

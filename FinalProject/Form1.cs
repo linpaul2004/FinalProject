@@ -19,22 +19,53 @@ namespace FinalProject
 		private int selectRow, selectCol;
 		private FormAdd formAdd = new FormAdd();
 		protected internal List<String>[] address=new List<String>[2];
+		public void DataStore()
+		{
+			StreamWriter LAddStore = new StreamWriter("LAddStore.txt");
+			LAddStore.WriteLine(comboBoxChoice.Items.Count);
+			for (int i = 0; i < comboBoxChoice.Items.Count; i++)
+			{
+				LAddStore.WriteLine(address[0][i]);
+				LAddStore.WriteLine(address[1][i]);
+			}
+				LAddStore.Close();
+		}
+
+		private void DataRead()
+		{
+			StreamReader LAddRead = new StreamReader("LAddStore.txt");
+			string bou = LAddRead.ReadLine();
+			int bound = Convert.ToInt32(bou);
+			for (int i = 0; i < 2; i++)
+			{
+				for (int j = 0; j < bound; j++)
+				{
+					address[i] = new List<string>();
+				}
+			}
+			while (true)
+			{
+				string tmp = LAddRead.ReadLine();
+				if (tmp == null)
+				{
+					break;
+				}
+				address[0].Add(tmp);
+				tmp = LAddRead.ReadLine();
+				address[1].Add(tmp);
+			}
+			LAddRead.Close();
+		}
 		public Form1()
 		{
 			InitializeComponent();
-			for (int i = 0; i < 2; i++)
-			{
-				address[i]=new List<string>();
-			}
+			DataRead();
 			comboBoxChoice.DropDownStyle = ComboBoxStyle.DropDownList;
-			comboBoxChoice.Items.Add("中華民國刑法");
-			comboBoxChoice.Items.Add("民法");
+			for (int i = 0; i < address[0].Count; i++)
+			{
+				comboBoxChoice.Items.Add(address[0][i]);
+			}
 			comboBoxChoice.SelectedIndex = 0;
-			// 0 存的是名字， 1 存的是網址
-			address[0].Add("中華民國刑法");
-			address[1].Add(@"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=C0000001");
-			address[0].Add("民法");
-			address[1].Add(@"http://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=B0000001");
 		}
 
 		private void Form1_Load(object sender, EventArgs e)

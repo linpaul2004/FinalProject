@@ -117,12 +117,12 @@
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CopyToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(99, 26);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
 			// 
 			// CopyToolStripMenuItem
 			// 
 			this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
-			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.CopyToolStripMenuItem.Text = "複製";
 			this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 
