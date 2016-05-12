@@ -18,31 +18,30 @@ namespace FinalProject
 	{
 		private int selectRow, selectCol;
 		private FormAdd formAdd = new FormAdd();
+		private string filepath = "../../LAddStore.txt";
 		protected internal List<String>[] address=new List<String>[2];
+
 		public void DataStore()
 		{
-			StreamWriter LAddStore = new StreamWriter("LAddStore.txt");
-			LAddStore.WriteLine(comboBoxChoice.Items.Count);
+			StreamWriter LAddStore = new StreamWriter(filepath);
 			for (int i = 0; i < comboBoxChoice.Items.Count; i++)
 			{
 				LAddStore.WriteLine(address[0][i]);
 				LAddStore.WriteLine(address[1][i]);
 			}
-				LAddStore.Close();
+			LAddStore.Flush();
+			LAddStore.Close();
 		}
 
 		private void DataRead()
 		{
-			StreamReader LAddRead = new StreamReader("LAddStore.txt");
-			string bou = LAddRead.ReadLine();
-			int bound = Convert.ToInt32(bou);
-			for (int i = 0; i < 2; i++)
+			FileInfo file = new FileInfo(filepath);
+			if (file.Exists == false)
 			{
-				for (int j = 0; j < bound; j++)
-				{
-					address[i] = new List<string>();
-				}
+				FileStream fs = file.Create();
+				fs.Close();
 			}
+			StreamReader LAddRead = new StreamReader(filepath);
 			while (true)
 			{
 				string tmp = LAddRead.ReadLine();
@@ -56,16 +55,24 @@ namespace FinalProject
 			}
 			LAddRead.Close();
 		}
+
 		public Form1()
 		{
 			InitializeComponent();
+			for (int i = 0; i < 2; i++)
+			{
+				address[i] = new List<string>();
+			}
 			DataRead();
 			comboBoxChoice.DropDownStyle = ComboBoxStyle.DropDownList;
 			for (int i = 0; i < address[0].Count; i++)
 			{
 				comboBoxChoice.Items.Add(address[0][i]);
 			}
-			comboBoxChoice.SelectedIndex = 0;
+			if (comboBoxChoice.Items.Count > 0)
+			{
+				comboBoxChoice.SelectedIndex = 0;
+			}
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -77,7 +84,8 @@ namespace FinalProject
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if(String.IsNullOrEmpty(textSearch.Text)){
+			if(String.IsNullOrEmpty(textSearch.Text))
+			{
 				return;
 			}
 			dataGridView1.Rows.Clear();
