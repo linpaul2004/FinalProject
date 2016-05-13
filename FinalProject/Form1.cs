@@ -118,6 +118,7 @@ namespace FinalProject
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			textSearch.Text = textSearch.Text.Trim();
 			if(String.IsNullOrEmpty(textSearch.Text))
 			{
 				return;
@@ -126,12 +127,11 @@ namespace FinalProject
 			try
 			{
 				//選擇的法律網址
-				int selectLaw = comboBoxChoice.SelectedIndex;
+				int selectLaw = comboBoxChoice.SelectedIndex, index = 0;
 				StreamReader sw = new StreamReader("../../Law" + selectLaw + ".txt");
 				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
 				String result = sw.ReadToEnd();
 				Match match = regex.Match(result);
-				String find = textSearch.Text;
 				while (true)
 				{
 					if (String.IsNullOrEmpty(match.ToString()))
@@ -140,7 +140,7 @@ namespace FinalProject
 					}
 					if (checkBoxConsistent.Checked)
 					{
-						if (Regex.IsMatch(match.Groups[2].ToString(), textSearch.Text) == false)
+						if (Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text)) == false)
 						{
 							match = match.NextMatch();
 							continue;
@@ -151,7 +151,7 @@ namespace FinalProject
 						int i;
 						for (i = 0; i < textSearch.Text.Length; i++)
 						{
-							if (Regex.IsMatch(match.Groups[2].ToString(), textSearch.Text[i].ToString()) == false)
+							if (textSearch.Text[i] != ' ' && Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text[i].ToString())) == false)
 							{
 								break;
 							}
@@ -162,12 +162,13 @@ namespace FinalProject
 							continue;
 						}
 					}
-					int index = dataGridView1.Rows.Add();
+					index = dataGridView1.Rows.Add();
 					dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
 					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
 					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
 					match = match.NextMatch();
 				}
+				labelTotal.Text = "搜尋結果：" + index + " 項";
 				sw.Close();
 			}
 			catch (Exception def)
@@ -201,6 +202,16 @@ namespace FinalProject
 		private void buttonRefresh_Click(object sender, EventArgs e)
 		{
 			DataStore();
+		}
+
+		private void textSearch_Enter(object sender, EventArgs e)
+		{
+			textSearch.BackColor = Color.Yellow;
+		}
+
+		private void textSearch_Leave(object sender, EventArgs e)
+		{
+			textSearch.BackColor = Color.White;
 		}
 	}
 }

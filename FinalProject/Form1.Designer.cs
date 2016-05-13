@@ -43,6 +43,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.buttonRefresh = new System.Windows.Forms.Button();
 			this.checkBoxConsistent = new System.Windows.Forms.CheckBox();
+			this.labelTotal = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -62,6 +63,8 @@
 			this.textSearch.Name = "textSearch";
 			this.textSearch.Size = new System.Drawing.Size(255, 22);
 			this.textSearch.TabIndex = 1;
+			this.textSearch.Enter += new System.EventHandler(this.textSearch_Enter);
+			this.textSearch.Leave += new System.EventHandler(this.textSearch_Leave);
 			// 
 			// buttonSearch
 			// 
@@ -178,11 +181,21 @@
 			this.checkBoxConsistent.Text = "一致搜尋";
 			this.checkBoxConsistent.UseVisualStyleBackColor = true;
 			// 
+			// labelTotal
+			// 
+			this.labelTotal.AutoSize = true;
+			this.labelTotal.Location = new System.Drawing.Point(256, 74);
+			this.labelTotal.Name = "labelTotal";
+			this.labelTotal.Size = new System.Drawing.Size(86, 12);
+			this.labelTotal.TabIndex = 11;
+			this.labelTotal.Text = "搜尋結果：0 項";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(603, 384);
+			this.Controls.Add(this.labelTotal);
 			this.Controls.Add(this.checkBoxConsistent);
 			this.Controls.Add(this.buttonRefresh);
 			this.Controls.Add(this.label1);
@@ -218,6 +231,7 @@
 		protected internal System.Windows.Forms.ComboBox comboBoxChoice;
 		private System.Windows.Forms.Button buttonRefresh;
 		private System.Windows.Forms.CheckBox checkBoxConsistent;
+		private System.Windows.Forms.Label labelTotal;
 	}
 }
 
