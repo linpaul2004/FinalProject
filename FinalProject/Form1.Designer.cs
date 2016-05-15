@@ -38,6 +38,7 @@
 			this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SetToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.comboBoxChoice = new System.Windows.Forms.ComboBox();
 			this.buttonAdd = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -48,15 +49,16 @@
 			this.檔案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.列印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.輸出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.txtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.離開ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.我的最愛ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.LikeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.自訂法典ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.字彙表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.背景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.字體ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.顏色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.說明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,9 +68,8 @@
 			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
 			this.自訂ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.txtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.顏色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.說明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -146,17 +147,26 @@
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyToolStripMenuItem});
+            this.CopyToolStripMenuItem,
+            this.SetToolStripMenuItem1});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(167, 48);
 			// 
 			// CopyToolStripMenuItem
 			// 
 			this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
 			this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
 			this.CopyToolStripMenuItem.Text = "複製(C)";
 			this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
+			// 
+			// SetToolStripMenuItem1
+			// 
+			this.SetToolStripMenuItem1.Name = "SetToolStripMenuItem1";
+			this.SetToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+			this.SetToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+			this.SetToolStripMenuItem1.Text = "我的最愛";
+			this.SetToolStripMenuItem1.Click += new System.EventHandler(this.SetToolStripMenuItem1_Click);
 			// 
 			// comboBoxChoice
 			// 
@@ -254,6 +264,24 @@
 			this.輸出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.輸出ToolStripMenuItem.Text = "輸出";
 			// 
+			// pdfToolStripMenuItem
+			// 
+			this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
+			this.pdfToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+			this.pdfToolStripMenuItem.Text = "pdf";
+			// 
+			// txtToolStripMenuItem
+			// 
+			this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
+			this.txtToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+			this.txtToolStripMenuItem.Text = "txt";
+			// 
+			// 刷新ToolStripMenuItem
+			// 
+			this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
+			this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.刷新ToolStripMenuItem.Text = "刷新";
+			// 
 			// 離開ToolStripMenuItem
 			// 
 			this.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem";
@@ -263,7 +291,7 @@
 			// 設定ToolStripMenuItem
 			// 
 			this.設定ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.我的最愛ToolStripMenuItem,
+            this.LikeToolStripMenuItem,
             this.自訂法典ToolStripMenuItem,
             this.字彙表ToolStripMenuItem,
             this.背景ToolStripMenuItem,
@@ -273,11 +301,12 @@
 			this.設定ToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.設定ToolStripMenuItem.Text = "設定";
 			// 
-			// 我的最愛ToolStripMenuItem
+			// LikeToolStripMenuItem
 			// 
-			this.我的最愛ToolStripMenuItem.Name = "我的最愛ToolStripMenuItem";
-			this.我的最愛ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.我的最愛ToolStripMenuItem.Text = "我的最愛";
+			this.LikeToolStripMenuItem.Name = "LikeToolStripMenuItem";
+			this.LikeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.LikeToolStripMenuItem.Text = "我的最愛";
+			this.LikeToolStripMenuItem.Click += new System.EventHandler(this.LikeToolStripMenuItem_Click);
 			// 
 			// 自訂法典ToolStripMenuItem
 			// 
@@ -313,6 +342,60 @@
 			this.字體ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.字體ToolStripMenuItem.Text = "字體";
 			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem2.Text = "8";
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem3.Text = "10";
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem4.Text = "12";
+			// 
+			// toolStripMenuItem5
+			// 
+			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+			this.toolStripMenuItem5.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem5.Text = "15";
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem6.Text = "20";
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem7.Text = "28";
+			// 
+			// toolStripMenuItem8
+			// 
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem8.Text = "36";
+			// 
+			// toolStripMenuItem9
+			// 
+			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+			this.toolStripMenuItem9.Size = new System.Drawing.Size(100, 22);
+			this.toolStripMenuItem9.Text = "72";
+			// 
+			// 自訂ToolStripMenuItem
+			// 
+			this.自訂ToolStripMenuItem.Name = "自訂ToolStripMenuItem";
+			this.自訂ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.自訂ToolStripMenuItem.Text = "自訂";
+			// 
 			// 顏色ToolStripMenuItem
 			// 
 			this.顏色ToolStripMenuItem.Name = "顏色ToolStripMenuItem";
@@ -324,78 +407,6 @@
 			this.說明ToolStripMenuItem.Name = "說明ToolStripMenuItem";
 			this.說明ToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.說明ToolStripMenuItem.Text = "說明";
-			// 
-			// toolStripMenuItem2
-			// 
-			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem2.Text = "8";
-			// 
-			// toolStripMenuItem3
-			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem3.Text = "10";
-			// 
-			// toolStripMenuItem4
-			// 
-			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem4.Text = "12";
-			// 
-			// toolStripMenuItem5
-			// 
-			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-			this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem5.Text = "15";
-			// 
-			// toolStripMenuItem6
-			// 
-			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-			this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem6.Text = "20";
-			// 
-			// toolStripMenuItem7
-			// 
-			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-			this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem7.Text = "28";
-			// 
-			// toolStripMenuItem8
-			// 
-			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-			this.toolStripMenuItem8.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem8.Text = "36";
-			// 
-			// toolStripMenuItem9
-			// 
-			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-			this.toolStripMenuItem9.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem9.Text = "72";
-			// 
-			// 自訂ToolStripMenuItem
-			// 
-			this.自訂ToolStripMenuItem.Name = "自訂ToolStripMenuItem";
-			this.自訂ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.自訂ToolStripMenuItem.Text = "自訂";
-			// 
-			// 刷新ToolStripMenuItem
-			// 
-			this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-			this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.刷新ToolStripMenuItem.Text = "刷新";
-			// 
-			// pdfToolStripMenuItem
-			// 
-			this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-			this.pdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.pdfToolStripMenuItem.Text = "pdf";
-			// 
-			// txtToolStripMenuItem
-			// 
-			this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
-			this.txtToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.txtToolStripMenuItem.Text = "txt";
 			// 
 			// Form1
 			// 
@@ -451,7 +462,7 @@
 		private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 離開ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 我的最愛ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem LikeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 自訂法典ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 字彙表ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 背景ToolStripMenuItem;
@@ -467,6 +478,7 @@
 		private System.Windows.Forms.ToolStripMenuItem 自訂ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 顏色ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 說明ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem SetToolStripMenuItem1;
 	}
 }
 

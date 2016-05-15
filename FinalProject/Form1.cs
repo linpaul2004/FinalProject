@@ -18,6 +18,7 @@ namespace FinalProject
 	{
 		private int selectRow, selectCol;
 		private FormAdd formAdd = new FormAdd();
+		private FormLike formLike = new FormLike();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
@@ -212,6 +213,37 @@ namespace FinalProject
 		private void textSearch_Leave(object sender, EventArgs e)
 		{
 			textSearch.BackColor = Color.White;
+		}
+
+		private void SetToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			if (selectCol >= 0 && selectRow >= 0)
+			{
+				StreamReader fin = new StreamReader("../../Like.txt");
+				string check = fin.ReadToEnd();
+				fin.Close();
+				if (Regex.IsMatch(check, dataGridView1.Rows[selectRow].Cells[2].Value.ToString()) == true)
+				{
+					MessageBox.Show("這個結果已被加入我的最愛", "Error", MessageBoxButtons.OK);
+				}
+				else
+				{
+					StreamWriter fo = new StreamWriter("../../Like.txt", true);
+					fo.WriteLine("cut");
+					for (int i = 0; i < 3; i++)
+					{
+						fo.WriteLine(dataGridView1.Rows[selectRow].Cells[i].Value.ToString());
+					}
+					fo.WriteLine("end");
+					fo.Flush();
+					fo.Close();
+				}
+			}
+		}
+
+		private void LikeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			formLike.ShowDialog(this);
 		}
 	}
 }
