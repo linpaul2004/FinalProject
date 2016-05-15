@@ -169,7 +169,7 @@ namespace FinalProject
 					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
 					match = match.NextMatch();
 				}
-				labelTotal.Text = "搜尋結果：" + index + " 項";
+				labelTotal.Text = "搜尋結果：" + (index+1) + " 項";
 				sw.Close();
 			}
 			catch (Exception def)
@@ -220,29 +220,40 @@ namespace FinalProject
 			if (selectCol >= 0 && selectRow >= 0)
 			{
 				StreamReader fin = new StreamReader("../../Like.txt");
-				string check = fin.ReadToEnd();
-				fin.Close();
-				if (Regex.IsMatch(check, dataGridView1.Rows[selectRow].Cells[2].Value.ToString()) == true)
+				while (true)
 				{
-					MessageBox.Show("這個結果已被加入我的最愛", "Error", MessageBoxButtons.OK);
-				}
-				else
-				{
-					StreamWriter fo = new StreamWriter("../../Like.txt", true);
-					fo.WriteLine("cut");
-					for (int i = 0; i < 3; i++)
+					string check = fin.ReadLine();
+					if (check == null)
 					{
-						fo.WriteLine(dataGridView1.Rows[selectRow].Cells[i].Value.ToString());
+						break;
 					}
-					fo.WriteLine("end");
-					fo.Flush();
-					fo.Close();
+					if (Regex.IsMatch(check, dataGridView1.Rows[selectRow].Cells[0].Value.ToString()) == true)
+					{
+						check = fin.ReadLine();
+						if (Regex.IsMatch(check, dataGridView1.Rows[selectRow].Cells[1].Value.ToString()) == true)
+						{
+							MessageBox.Show("這個結果已被加入我的最愛", "Error", MessageBoxButtons.OK);
+							fin.Close();
+							return;
+						}
+					}
 				}
+				fin.Close();
+				StreamWriter fo = new StreamWriter("../../Like.txt", true);
+				fo.WriteLine("cut");
+				for (int i = 0; i < 3; i++)
+				{
+					fo.WriteLine(dataGridView1.Rows[selectRow].Cells[i].Value.ToString());
+				}
+				fo.WriteLine("end");
+				fo.Flush();
+				fo.Close();
 			}
 		}
 
 		private void LikeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			
 			formLike.ShowDialog(this);
 		}
 	}

@@ -34,8 +34,12 @@
 			this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.DelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.buttonOK = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.DelAll = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -53,7 +57,7 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(436, 222);
+			this.dataGridView1.Size = new System.Drawing.Size(499, 262);
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
 			// 
@@ -80,30 +84,62 @@
 			// 
 			// contextMenuStrip1
 			// 
+			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DelToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+			// 
+			// DelToolStripMenuItem
+			// 
+			this.DelToolStripMenuItem.Name = "DelToolStripMenuItem";
+			this.DelToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.DelToolStripMenuItem.Text = "刪除";
+			this.DelToolStripMenuItem.Click += new System.EventHandler(this.DelToolStripMenuItem_Click);
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(239, 262);
+			this.buttonOK.Location = new System.Drawing.Point(264, 302);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 2;
 			this.buttonOK.Text = "返回";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(13, 16);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(33, 12);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "label1";
+			// 
+			// DelAll
+			// 
+			this.DelAll.Location = new System.Drawing.Point(524, 34);
+			this.DelAll.Name = "DelAll";
+			this.DelAll.Size = new System.Drawing.Size(75, 23);
+			this.DelAll.TabIndex = 4;
+			this.DelAll.Text = "全部刪除";
+			this.DelAll.UseVisualStyleBackColor = true;
+			this.DelAll.Click += new System.EventHandler(this.DelAll_Click);
+			// 
 			// FormLike
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(573, 288);
+			this.ClientSize = new System.Drawing.Size(611, 337);
+			this.Controls.Add(this.DelAll);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "FormLike";
 			this.Text = "FormLike";
 			this.Load += new System.EventHandler(this.FormLike_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.contextMenuStrip1.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -115,5 +151,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Content;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ToolStripMenuItem DelToolStripMenuItem;
+		private System.Windows.Forms.Button DelAll;
 	}
 }
