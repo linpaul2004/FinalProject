@@ -253,8 +253,37 @@ namespace FinalProject
 
 		private void LikeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			
 			formLike.ShowDialog(this);
+		}
+
+		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void RefreshToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			buttonRefresh.PerformClick();
+		}
+
+		private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			colorDialog1.Color = dataGridView1.ForeColor;
+			if (colorDialog1.ShowDialog(this) == DialogResult.OK)
+			{
+				dataGridView1.ForeColor = colorDialog1.Color;
+				formLike.dataGridView1.ForeColor = colorDialog1.Color;
+			}
+		}
+
+		private void BackgroundToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			colorDialog1.Color = dataGridView1.DefaultCellStyle.BackColor;
+			if (colorDialog1.ShowDialog(this) == DialogResult.OK)
+			{
+				dataGridView1.DefaultCellStyle.BackColor = colorDialog1.Color;
+				formLike.dataGridView1.DefaultCellStyle.BackColor = colorDialog1.Color;
+			}
 		}
 	}
 }
