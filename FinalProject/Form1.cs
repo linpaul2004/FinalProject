@@ -19,6 +19,7 @@ namespace FinalProject
 		private int selectRow, selectCol;
 		private FormAdd formAdd = new FormAdd();
 		private FormLike formLike = new FormLike();
+		private WordFont wordfont = new WordFont();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
@@ -284,6 +285,64 @@ namespace FinalProject
 				dataGridView1.DefaultCellStyle.BackColor = colorDialog1.Color;
 				formLike.dataGridView1.DefaultCellStyle.BackColor = colorDialog1.Color;
 			}
+		}
+
+		private void SetFontToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			wordfont.ShowDialog(this);
+			if (wordfont.font != 0)
+			{
+				float tmp = Convert.ToSingle(wordfont.font);
+				dataGridView1.Font = new Font("新細明體", tmp, FontStyle.Regular);
+			}
+		}
+
+		private void word8_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 8, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word10_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 10, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word12_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 12, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word15_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 15, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word20_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 20, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word28_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 28, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word36_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 36, FontStyle.Regular);
+			dataGridView1.Font = tmp;
+		}
+
+		private void word72_Click(object sender, EventArgs e)
+		{
+			Font tmp = new Font("新細明體", 72, FontStyle.Regular);
+			dataGridView1.Font = tmp;
 		}
 	}
 }

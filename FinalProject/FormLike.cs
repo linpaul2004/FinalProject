@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Drawing.Printing;
 
 namespace FinalProject
 {
@@ -52,6 +53,12 @@ namespace FinalProject
 		private void FormLike_Load(object sender, EventArgs e)
 		{
 			dataGridView1.Rows.Clear();
+			FileInfo file = new FileInfo("../../Like.txt");
+			if (file.Exists == false)
+			{
+				FileStream fs = file.Create();
+				fs.Close();
+			}
 			StreamReader fin = new StreamReader("../../Like.txt");
 			index = -1;
 			while (true)
@@ -103,6 +110,11 @@ namespace FinalProject
 			fo.Write("");
 			fo.Flush();
 			fo.Close();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			
 		}
 
 	}

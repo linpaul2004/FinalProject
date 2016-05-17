@@ -59,14 +59,14 @@
 			this.VocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.BackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.FontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word8 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word10 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word12 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word15 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word20 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word28 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word36 = new System.Windows.Forms.ToolStripMenuItem();
+			this.word72 = new System.Windows.Forms.ToolStripMenuItem();
 			this.SetFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -156,13 +156,13 @@
             this.CopyToolStripMenuItem,
             this.SetToolStripMenuItem1});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(164, 48);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(167, 48);
 			// 
 			// CopyToolStripMenuItem
 			// 
 			this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
 			this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
 			this.CopyToolStripMenuItem.Text = "複製(C)";
 			this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 
@@ -170,7 +170,7 @@
 			// 
 			this.SetToolStripMenuItem1.Name = "SetToolStripMenuItem1";
 			this.SetToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-			this.SetToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+			this.SetToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
 			this.SetToolStripMenuItem1.Text = "我的最愛";
 			this.SetToolStripMenuItem1.Click += new System.EventHandler(this.SetToolStripMenuItem1_Click);
 			// 
@@ -252,13 +252,13 @@
             this.RefreshToolStripMenuItem,
             this.ExitToolStripMenuItem});
 			this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-			this.FileToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.FileToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.FileToolStripMenuItem.Text = "檔案";
 			// 
 			// PrintToolStripMenuItem
 			// 
 			this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.PrintToolStripMenuItem.Text = "列印";
 			// 
 			// OutputToolStripMenuItem
@@ -267,7 +267,7 @@
             this.pdfToolStripMenuItem,
             this.txtToolStripMenuItem});
 			this.OutputToolStripMenuItem.Name = "OutputToolStripMenuItem";
-			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.OutputToolStripMenuItem.Text = "輸出到";
 			// 
 			// pdfToolStripMenuItem
@@ -285,14 +285,14 @@
 			// RefreshToolStripMenuItem
 			// 
 			this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
-			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.RefreshToolStripMenuItem.Text = "刷新";
 			this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.ExitToolStripMenuItem.Text = "離開";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -306,7 +306,7 @@
             this.FontToolStripMenuItem,
             this.ColorToolStripMenuItem});
 			this.OptionToolStripMenuItem.Name = "OptionToolStripMenuItem";
-			this.OptionToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.OptionToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.OptionToolStripMenuItem.Text = "設定";
 			// 
 			// LikeToolStripMenuItem
@@ -338,72 +338,81 @@
 			// FontToolStripMenuItem
 			// 
 			this.FontToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem9,
+            this.word8,
+            this.word10,
+            this.word12,
+            this.word15,
+            this.word20,
+            this.word28,
+            this.word36,
+            this.word72,
             this.SetFontToolStripMenuItem});
 			this.FontToolStripMenuItem.Name = "FontToolStripMenuItem";
 			this.FontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.FontToolStripMenuItem.Text = "字體大小";
 			// 
-			// toolStripMenuItem2
+			// word8
 			// 
-			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem2.Text = "8";
+			this.word8.Name = "word8";
+			this.word8.Size = new System.Drawing.Size(152, 22);
+			this.word8.Text = "8";
+			this.word8.Click += new System.EventHandler(this.word8_Click);
 			// 
-			// toolStripMenuItem3
+			// word10
 			// 
-			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem3.Text = "10";
+			this.word10.Name = "word10";
+			this.word10.Size = new System.Drawing.Size(152, 22);
+			this.word10.Text = "10";
+			this.word10.Click += new System.EventHandler(this.word10_Click);
 			// 
-			// toolStripMenuItem4
+			// word12
 			// 
-			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem4.Text = "12";
+			this.word12.Name = "word12";
+			this.word12.Size = new System.Drawing.Size(152, 22);
+			this.word12.Text = "12";
+			this.word12.Click += new System.EventHandler(this.word12_Click);
 			// 
-			// toolStripMenuItem5
+			// word15
 			// 
-			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-			this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem5.Text = "15";
+			this.word15.Name = "word15";
+			this.word15.Size = new System.Drawing.Size(152, 22);
+			this.word15.Text = "15";
+			this.word15.Click += new System.EventHandler(this.word15_Click);
 			// 
-			// toolStripMenuItem6
+			// word20
 			// 
-			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-			this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem6.Text = "20";
+			this.word20.Name = "word20";
+			this.word20.Size = new System.Drawing.Size(152, 22);
+			this.word20.Text = "20";
+			this.word20.Click += new System.EventHandler(this.word20_Click);
 			// 
-			// toolStripMenuItem7
+			// word28
 			// 
-			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-			this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem7.Text = "28";
+			this.word28.Name = "word28";
+			this.word28.Size = new System.Drawing.Size(152, 22);
+			this.word28.Text = "28";
+			this.word28.Click += new System.EventHandler(this.word28_Click);
 			// 
-			// toolStripMenuItem8
+			// word36
 			// 
-			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-			this.toolStripMenuItem8.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem8.Text = "36";
+			this.word36.Name = "word36";
+			this.word36.Size = new System.Drawing.Size(152, 22);
+			this.word36.Text = "36";
+			this.word36.Click += new System.EventHandler(this.word36_Click);
 			// 
-			// toolStripMenuItem9
+			// word72
 			// 
-			this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-			this.toolStripMenuItem9.Size = new System.Drawing.Size(152, 22);
-			this.toolStripMenuItem9.Text = "72";
+			this.word72.Name = "word72";
+			this.word72.Size = new System.Drawing.Size(152, 22);
+			this.word72.Text = "72";
+			this.word72.Click += new System.EventHandler(this.word72_Click);
 			// 
 			// SetFontToolStripMenuItem
 			// 
 			this.SetFontToolStripMenuItem.Name = "SetFontToolStripMenuItem";
 			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.SetFontToolStripMenuItem.Text = "自訂";
+			this.SetFontToolStripMenuItem.Click += new System.EventHandler(this.SetFontToolStripMenuItem_Click);
 			// 
 			// ColorToolStripMenuItem
 			// 
@@ -415,7 +424,7 @@
 			// HelpToolStripMenuItem
 			// 
 			this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.HelpToolStripMenuItem.Text = "說明";
 			// 
 			// Form1
@@ -474,14 +483,14 @@
 		private System.Windows.Forms.ToolStripMenuItem VocabularyToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem BackgroundToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem FontToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+		private System.Windows.Forms.ToolStripMenuItem word8;
+		private System.Windows.Forms.ToolStripMenuItem word10;
+		private System.Windows.Forms.ToolStripMenuItem word12;
+		private System.Windows.Forms.ToolStripMenuItem word15;
+		private System.Windows.Forms.ToolStripMenuItem word20;
+		private System.Windows.Forms.ToolStripMenuItem word28;
+		private System.Windows.Forms.ToolStripMenuItem word36;
+		private System.Windows.Forms.ToolStripMenuItem word72;
 		private System.Windows.Forms.ToolStripMenuItem SetFontToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ColorToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
