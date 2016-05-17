@@ -12,7 +12,6 @@ namespace FinalProject
 {
 	public partial class WordFont : Form
 	{
-		public double font;
 		public WordFont()
 		{
 			InitializeComponent();
@@ -20,22 +19,8 @@ namespace FinalProject
 
 		private void WordFont_Load(object sender, EventArgs e)
 		{
-			font = 0;
-			textBox1.Clear();
 			button1.DialogResult = DialogResult.OK;
-			button2.DialogResult = DialogResult.OK;
-		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			if (textBox1.Text == "0")
-			{
-				MessageBox.Show("Error", "文字大小設定不正確", MessageBoxButtons.RetryCancel);
-			}
-			else
-			{
-				font = Convert.ToDouble(textBox1.Text);
-			}
+			button2.DialogResult = DialogResult.Cancel;
 		}
 	}
 }

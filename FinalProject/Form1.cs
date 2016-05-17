@@ -289,60 +289,61 @@ namespace FinalProject
 
 		private void SetFontToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			wordfont.numericUpDown1.Value = (decimal)dataGridView1.Font.Size;
 			wordfont.ShowDialog(this);
-			if (wordfont.font != 0)
+			if (wordfont.DialogResult==DialogResult.OK)
 			{
-				float tmp = Convert.ToSingle(wordfont.font);
-				dataGridView1.Font = new Font("新細明體", tmp, FontStyle.Regular);
+				dataGridView1.Font = new Font(dataGridView1.Font.Name, (float)wordfont.numericUpDown1.Value, dataGridView1.Font.Style);
+				formLike.dataGridView1.Font = dataGridView1.Font;
 			}
 		}
 
 		private void word8_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 8, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 8, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word10_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 10, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 10, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word12_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 12, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 12, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word15_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 15, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 15, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word20_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 20, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 20, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word28_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 28, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 28, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word36_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 36, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 36, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 
 		private void word72_Click(object sender, EventArgs e)
 		{
-			Font tmp = new Font("新細明體", 72, FontStyle.Regular);
-			dataGridView1.Font = tmp;
+			dataGridView1.Font = new Font(dataGridView1.Font.Name, 72, dataGridView1.Font.Style);
+			formLike.dataGridView1.Font = dataGridView1.Font;
 		}
 	}
 }
