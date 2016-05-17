@@ -71,6 +71,8 @@
 			this.ColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.printDialog1 = new System.Windows.Forms.PrintDialog();
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -258,8 +260,9 @@
 			// PrintToolStripMenuItem
 			// 
 			this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.PrintToolStripMenuItem.Text = "列印";
+			this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
 			// 
 			// OutputToolStripMenuItem
 			// 
@@ -267,7 +270,7 @@
             this.pdfToolStripMenuItem,
             this.txtToolStripMenuItem});
 			this.OutputToolStripMenuItem.Name = "OutputToolStripMenuItem";
-			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.OutputToolStripMenuItem.Text = "輸出到";
 			// 
 			// pdfToolStripMenuItem
@@ -281,18 +284,19 @@
 			this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
 			this.txtToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.txtToolStripMenuItem.Text = "純文字檔 (.txt)";
+			this.txtToolStripMenuItem.Click += new System.EventHandler(this.txtToolStripMenuItem_Click);
 			// 
 			// RefreshToolStripMenuItem
 			// 
 			this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
-			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.RefreshToolStripMenuItem.Text = "刷新";
 			this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.ExitToolStripMenuItem.Text = "離開";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -354,63 +358,63 @@
 			// word8
 			// 
 			this.word8.Name = "word8";
-			this.word8.Size = new System.Drawing.Size(152, 22);
+			this.word8.Size = new System.Drawing.Size(100, 22);
 			this.word8.Text = "8";
 			this.word8.Click += new System.EventHandler(this.word8_Click);
 			// 
 			// word10
 			// 
 			this.word10.Name = "word10";
-			this.word10.Size = new System.Drawing.Size(152, 22);
+			this.word10.Size = new System.Drawing.Size(100, 22);
 			this.word10.Text = "10";
 			this.word10.Click += new System.EventHandler(this.word10_Click);
 			// 
 			// word12
 			// 
 			this.word12.Name = "word12";
-			this.word12.Size = new System.Drawing.Size(152, 22);
+			this.word12.Size = new System.Drawing.Size(100, 22);
 			this.word12.Text = "12";
 			this.word12.Click += new System.EventHandler(this.word12_Click);
 			// 
 			// word15
 			// 
 			this.word15.Name = "word15";
-			this.word15.Size = new System.Drawing.Size(152, 22);
+			this.word15.Size = new System.Drawing.Size(100, 22);
 			this.word15.Text = "15";
 			this.word15.Click += new System.EventHandler(this.word15_Click);
 			// 
 			// word20
 			// 
 			this.word20.Name = "word20";
-			this.word20.Size = new System.Drawing.Size(152, 22);
+			this.word20.Size = new System.Drawing.Size(100, 22);
 			this.word20.Text = "20";
 			this.word20.Click += new System.EventHandler(this.word20_Click);
 			// 
 			// word28
 			// 
 			this.word28.Name = "word28";
-			this.word28.Size = new System.Drawing.Size(152, 22);
+			this.word28.Size = new System.Drawing.Size(100, 22);
 			this.word28.Text = "28";
 			this.word28.Click += new System.EventHandler(this.word28_Click);
 			// 
 			// word36
 			// 
 			this.word36.Name = "word36";
-			this.word36.Size = new System.Drawing.Size(152, 22);
+			this.word36.Size = new System.Drawing.Size(100, 22);
 			this.word36.Text = "36";
 			this.word36.Click += new System.EventHandler(this.word36_Click);
 			// 
 			// word72
 			// 
 			this.word72.Name = "word72";
-			this.word72.Size = new System.Drawing.Size(152, 22);
+			this.word72.Size = new System.Drawing.Size(100, 22);
 			this.word72.Text = "72";
 			this.word72.Click += new System.EventHandler(this.word72_Click);
 			// 
 			// SetFontToolStripMenuItem
 			// 
 			this.SetFontToolStripMenuItem.Name = "SetFontToolStripMenuItem";
-			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.SetFontToolStripMenuItem.Text = "自訂";
 			this.SetFontToolStripMenuItem.Click += new System.EventHandler(this.SetFontToolStripMenuItem_Click);
 			// 
@@ -426,6 +430,10 @@
 			this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
 			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.HelpToolStripMenuItem.Text = "說明";
+			// 
+			// printDialog1
+			// 
+			this.printDialog1.UseEXDialog = true;
 			// 
 			// Form1
 			// 
@@ -499,6 +507,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Num;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Content;
 		private System.Windows.Forms.ColorDialog colorDialog1;
+		private System.Windows.Forms.PrintDialog printDialog1;
+		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 	}
 }
 

@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace FinalProject
 {
@@ -343,6 +344,35 @@ namespace FinalProject
 		{
 			Font tmp = new Font("新細明體", 72, FontStyle.Regular);
 			dataGridView1.Font = tmp;
+		}
+
+		private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void txtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			saveFileDialog1.Filter = "TXT File|*.txt";
+			if (saveFileDialog1.ShowDialog(this) == DialogResult.OK && saveFileDialog1.FileName != "")
+			{
+				FileInfo file = new FileInfo(saveFileDialog1.FileName);
+				StreamWriter fout;
+				if (file.Exists == false)
+				{
+					FileStream fs = file.Create();
+					fs.Close();
+				}
+				fout = new StreamWriter(saveFileDialog1.FileName);
+				for (int i = 0; i < dataGridView1.Rows.Count; i++)
+				{
+					fout.WriteLine(dataGridView1.Rows[i].Cells[0].Value.ToString());
+					fout.WriteLine(dataGridView1.Rows[i].Cells[1].Value.ToString());
+					fout.WriteLine(dataGridView1.Rows[i].Cells[2].Value.ToString());
+				}
+				fout.Flush();
+				fout.Close();
+			}
 		}
 	}
 }
