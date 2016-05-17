@@ -349,7 +349,11 @@ namespace FinalProject
 
 		private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			
+			printDialog1.Document = printDocument1;
+			if (printDialog1.ShowDialog(this) == DialogResult.OK)
+			{
+				printDocument1.Print();
+			}
 		}
 
 		private void txtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -374,6 +378,23 @@ namespace FinalProject
 				fout.Flush();
 				fout.Close();
 			}
+		}
+
+		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+		{
+			printDocument1.DocumentName = "查詢結果";
+			string text = "搜尋字串：" + textSearch.Text + "\n";
+			text += "搜尋法律：" + comboBoxChoice.SelectedItem.ToString() + "\n";
+			for (int i = 0; i < dataGridView1.Rows.Count; i++)
+			{
+				text += dataGridView1.Rows[i].Cells[0].Value.ToString();
+				text += "\n第 ";
+				text += dataGridView1.Rows[i].Cells[1].Value.ToString();
+				text += " 條\n";
+				text += dataGridView1.Rows[i].Cells[2].Value.ToString();
+				text += "\n";
+			}
+			e.Graphics.DrawString(text, new System.Drawing.Font("新細明體", 9, FontStyle.Regular), System.Drawing.Brushes.Black, 10, 10);
 		}
 	}
 }
