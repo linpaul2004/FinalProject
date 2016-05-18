@@ -33,7 +33,7 @@ namespace FinalProject
 			}
 			Form1 form = (Form1)this.Owner;
 			int num = form.address[0].Count;
-			FileInfo file = new FileInfo("../../Law" + num.ToString() + ".txt");
+			FileInfo file = new FileInfo("../../" + name + ".txt");
 			if (file.Exists == false)
 			{
 				FileStream fs = file.Create();

@@ -233,6 +233,7 @@ namespace FinalProject
 								else
 								{
 									MessageBox.Show("Error", "這個自定義法典中的法律可能被刪除了!!", MessageBoxButtons.OK);
+									break;
 								}
 							}
 						}
