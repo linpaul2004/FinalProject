@@ -145,6 +145,7 @@ namespace FinalProject
 			{
 				if (address[1][i] == "")
 				{
+					i++;
 					continue;
 				}
 				WebRequest req = WebRequest.Create(address[1][i]);
