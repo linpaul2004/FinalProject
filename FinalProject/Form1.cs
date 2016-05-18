@@ -189,7 +189,29 @@ namespace FinalProject
 			string tmp = sw.ReadLine();
 			if (tmp == "Mixed")
 			{
-				
+				tmp = sw.ReadLine();
+				int index = 0;
+				while (true)
+				{
+					if (tmp == null || tmp == "")
+					{
+						break;
+					}
+					for (int i = 0; i < comboBoxChoice.Items.Count; i++)
+					{
+						if (tmp == comboBoxChoice.Items[i].ToString())
+						{
+							StreamReader re = new StreamReader("../../Law" + i + ".txt");
+							string result = re.ReadToEnd();
+							Search(result, comboBoxChoice.Items[i].ToString(), index);
+							re.Close();
+							break;
+						}
+					}
+
+					tmp = sw.ReadLine();
+				}
+				sw.Close();
 			}
 			else
 			{
