@@ -40,7 +40,7 @@ namespace FinalProject
 				fs.Close();
 			}
 
-			StreamWriter fout = new StreamWriter("../../Law" + num.ToString() + ".txt");
+			StreamWriter fout = new StreamWriter("../../" + name + ".txt");
 			fout.WriteLine("Mixed");
 			for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
 			{

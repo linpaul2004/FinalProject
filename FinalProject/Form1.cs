@@ -185,7 +185,16 @@ namespace FinalProject
 			dataGridView1.Rows.Clear();
 			//選擇的法律網址
 			int selectLaw = comboBoxChoice.SelectedIndex;
-			StreamReader sw = new StreamReader("../../Law" + selectLaw + ".txt");
+			StreamReader sw;
+			FileInfo file = new FileInfo("../../Law" + selectLaw + ".txt");
+			if (file.Exists == true)
+			{
+				sw = new StreamReader("../../Law" + selectLaw + ".txt");
+			}
+			else
+			{
+				sw = new StreamReader("../../" + comboBoxChoice.Items[comboBoxChoice.SelectedIndex].ToString() + ".txt");
+			}
 			string tmp = sw.ReadLine();
 			if (tmp == "Mixed")
 			{
@@ -201,11 +210,31 @@ namespace FinalProject
 					{
 						if (tmp == comboBoxChoice.Items[i].ToString())
 						{
-							StreamReader re = new StreamReader("../../Law" + i + ".txt");
-							string result = re.ReadToEnd();
-							Search(result, comboBoxChoice.Items[i].ToString(), index);
-							re.Close();
-							break;
+							FileInfo refile = new FileInfo("../../Law" + i + ".txt");
+							if (refile.Exists == true)
+							{
+								StreamReader re = new StreamReader("../../Law" + i + ".txt");
+								string result = re.ReadToEnd();
+								Search(result, comboBoxChoice.Items[i].ToString(), index);
+								re.Close();
+								break;
+							}
+							else
+							{
+								FileInfo reagfile = new FileInfo("../../" + comboBoxChoice.Items[i].ToString() + ".txt");
+								if (reagfile.Exists == true)
+								{
+									StreamReader re = new StreamReader("../../" + comboBoxChoice.Items[i].ToString() + ".txt");
+									string result = re.ReadToEnd();
+									Search(result, comboBoxChoice.Items[i].ToString(), index);
+									re.Close();
+									break;
+								}
+								else
+								{
+									MessageBox.Show("Error", "這個自定義法典中的法律可能被刪除了!!", MessageBoxButtons.OK);
+								}
+							}
 						}
 					}
 
