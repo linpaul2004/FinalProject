@@ -76,6 +76,7 @@ namespace FinalProject
 				textSearch.Text = "";
 			}
 		}
+
 		protected internal void DataStore()
 		{
 			StreamWriter LAddStore = new StreamWriter(filepath);
@@ -136,6 +137,20 @@ namespace FinalProject
 			dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 			dataGridView1.ContextMenuStrip = contextMenuStrip1;
 			selectCol = selectRow = -1;
+			this.RefreshUpdateTime();
+		}
+
+		private void RefreshUpdateTime()
+		{
+			FileInfo fi = new FileInfo("../../Law0.txt");
+			if (fi.Exists)
+			{
+				labelLastUpdate.Text = fi.LastWriteTime.ToString();
+			}
+			else
+			{
+				labelLastUpdate.Text = "尚未新增法律";
+			}
 		}
 
 		private void ReadAddress()
@@ -173,6 +188,7 @@ namespace FinalProject
 				req.Abort();
 				reply.Close();
 			}
+			this.RefreshUpdateTime();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -238,7 +254,6 @@ namespace FinalProject
 							}
 						}
 					}
-
 					tmp = sw.ReadLine();
 				}
 				sw.Close();
