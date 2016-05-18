@@ -76,6 +76,19 @@ namespace FinalProject
 			Form1 parent = (Form1)this.Owner;
 			while (checkedListBox1.SelectedIndices.Count > 0)
 			{
+				FileInfo file = new FileInfo("../../Law" + checkedListBox1.SelectedIndices[0].ToString() + ".txt");
+				if (file.Exists == false)
+				{
+					FileInfo name = new FileInfo("../../" + (parent.address[0][checkedListBox1.SelectedIndices[0]]).ToString() + ".txt");
+					if (name.Exists == true)
+					{
+						name.Delete();
+					}
+				}
+				else
+				{
+					file.Delete();
+				}
 				parent.address[0].RemoveAt(checkedListBox1.SelectedIndices[0]);
 				parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
 				parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.SelectedIndices[0]]);

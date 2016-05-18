@@ -21,10 +21,61 @@ namespace FinalProject
 		private FormAdd formAdd = new FormAdd();
 		private FormLike formLike = new FormLike();
 		private WordFont wordfont = new WordFont();
+		private UserDefDic userdefdic = new UserDefDic();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
 
+		private void Search(string result, string name, int index)
+		{
+			try
+			{
+				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
+				Match match = regex.Match(result);
+				while (true)
+				{
+					if (String.IsNullOrEmpty(match.ToString()))
+					{
+						break;
+					}
+					if (checkBoxConsistent.Checked)
+					{
+						if (Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text)) == false)
+						{
+							match = match.NextMatch();
+							continue;
+						}
+					}
+					else
+					{
+						int i;
+						for (i = 0; i < textSearch.Text.Length; i++)
+						{
+							if (textSearch.Text[i] != ' ' && Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text[i].ToString())) == false)
+							{
+								break;
+							}
+						}
+						if (i < textSearch.Text.Length)
+						{
+							match = match.NextMatch();
+							continue;
+						}
+					}
+					index = dataGridView1.Rows.Add();
+					dataGridView1.Rows[index].Cells[0].Value = name;
+					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
+					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
+					match = match.NextMatch();
+				}
+				labelTotal.Text = "搜尋結果：" + (index + 1) + " 項";
+			}
+			catch (Exception def)
+			{
+				MessageBox.Show("發生例外錯誤：\n錯誤訊息：" + def.ToString(), "錯誤訊息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				textSearch.Text = "";
+			}
+		}
 		protected internal void DataStore()
 		{
 			StreamWriter LAddStore = new StreamWriter(filepath);
@@ -91,6 +142,11 @@ namespace FinalProject
 		{
 			for (int i = 0; i < address[0].Count; i++)
 			{
+				if (address[1][i] == "")
+				{
+					i++;
+					continue;
+				}
 				WebRequest req = WebRequest.Create(address[1][i]);
 				req.Method = "GET";
 				WebResponse reply = req.GetResponse();
@@ -127,58 +183,73 @@ namespace FinalProject
 				return;
 			}
 			dataGridView1.Rows.Clear();
-			try
+			//選擇的法律網址
+			int selectLaw = comboBoxChoice.SelectedIndex;
+			StreamReader sw;
+			FileInfo file = new FileInfo("../../Law" + selectLaw + ".txt");
+			if (file.Exists == true)
 			{
-				//選擇的法律網址
-				int selectLaw = comboBoxChoice.SelectedIndex, index = 0;
-				StreamReader sw = new StreamReader("../../Law" + selectLaw + ".txt");
-				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
-				String result = sw.ReadToEnd();
-				Match match = regex.Match(result);
+				sw = new StreamReader("../../Law" + selectLaw + ".txt");
+			}
+			else
+			{
+				sw = new StreamReader("../../" + comboBoxChoice.Items[comboBoxChoice.SelectedIndex].ToString() + ".txt");
+			}
+			string tmp = sw.ReadLine();
+			if (tmp == "Mixed")
+			{
+				tmp = sw.ReadLine();
+				int index = 0;
 				while (true)
 				{
-					if (String.IsNullOrEmpty(match.ToString()))
+					if (tmp == null || tmp == "")
 					{
 						break;
 					}
-					if (checkBoxConsistent.Checked)
+					for (int i = 0; i < comboBoxChoice.Items.Count; i++)
 					{
-						if (Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text)) == false)
+						if (tmp == comboBoxChoice.Items[i].ToString())
 						{
-							match = match.NextMatch();
-							continue;
-						}
-					}
-					else
-					{
-						int i;
-						for (i = 0; i < textSearch.Text.Length; i++)
-						{
-							if (textSearch.Text[i] != ' ' && Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text[i].ToString())) == false)
+							FileInfo refile = new FileInfo("../../Law" + i + ".txt");
+							if (refile.Exists == true)
 							{
+								StreamReader re = new StreamReader("../../Law" + i + ".txt");
+								string result = re.ReadToEnd();
+								Search(result, comboBoxChoice.Items[i].ToString(), index);
+								re.Close();
 								break;
 							}
-						}
-						if (i < textSearch.Text.Length)
-						{
-							match = match.NextMatch();
-							continue;
+							else
+							{
+								FileInfo reagfile = new FileInfo("../../" + comboBoxChoice.Items[i].ToString() + ".txt");
+								if (reagfile.Exists == true)
+								{
+									StreamReader re = new StreamReader("../../" + comboBoxChoice.Items[i].ToString() + ".txt");
+									string result = re.ReadToEnd();
+									Search(result, comboBoxChoice.Items[i].ToString(), index);
+									re.Close();
+									break;
+								}
+								else
+								{
+									MessageBox.Show("Error", "這個自定義法典中的法律可能被刪除了!!", MessageBoxButtons.OK);
+								}
+							}
 						}
 					}
-					index = dataGridView1.Rows.Add();
-					dataGridView1.Rows[index].Cells[0].Value = comboBoxChoice.SelectedItem.ToString();
-					dataGridView1.Rows[index].Cells[1].Value = match.Groups[1].ToString();
-					dataGridView1.Rows[index].Cells[2].Value = match.Groups[2].ToString();
-					match = match.NextMatch();
+
+					tmp = sw.ReadLine();
 				}
-				labelTotal.Text = "搜尋結果：" + (index+1) + " 項";
 				sw.Close();
 			}
-			catch (Exception def)
+			else
 			{
-				MessageBox.Show("發生例外錯誤：\n錯誤訊息："+def.ToString(), "錯誤訊息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				textSearch.Text = "";
+				String result = sw.ReadToEnd();
+				int index = 0;
+				Search(result, comboBoxChoice.SelectedItem.ToString(), index);
+				sw.Close();
 			}
+
 		}
 
 		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -395,6 +466,17 @@ namespace FinalProject
 				text += "\n";
 			}
 			e.Graphics.DrawString(text, new System.Drawing.Font("新細明體", 9, FontStyle.Regular), System.Drawing.Brushes.Black, 10, 10);
+		}
+
+		private void UserDefinedToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			string[] tmp = new string[address[0].Count];
+			for (int i = 0; i < address[0].Count; i++)
+			{
+				tmp[i] = address[0][i];
+			}
+			userdefdic.con = tmp;
+			userdefdic.ShowDialog(this);
 		}
 	}
 }

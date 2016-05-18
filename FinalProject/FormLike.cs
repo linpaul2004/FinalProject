@@ -112,9 +112,12 @@ namespace FinalProject
 			fo.Close();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void delete_Click(object sender, EventArgs e)
 		{
-			
+			if (selectCol >= 0 && selectRow >= 0)
+			{
+				DelRow();
+			}
 		}
 
 	}
