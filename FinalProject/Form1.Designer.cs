@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.Label label2;
 			this.lbSearch = new System.Windows.Forms.Label();
 			this.textSearch = new System.Windows.Forms.TextBox();
 			this.buttonSearch = new System.Windows.Forms.Button();
@@ -73,9 +74,13 @@
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelLastUpdate = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lbSearch
@@ -205,11 +210,11 @@
 			// 
 			// buttonRefresh
 			// 
-			this.buttonRefresh.Location = new System.Drawing.Point(174, 85);
+			this.buttonRefresh.Location = new System.Drawing.Point(3, 3);
 			this.buttonRefresh.Name = "buttonRefresh";
-			this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+			this.buttonRefresh.Size = new System.Drawing.Size(128, 23);
 			this.buttonRefresh.TabIndex = 9;
-			this.buttonRefresh.Text = "刷新";
+			this.buttonRefresh.Text = "更新法條內容";
 			this.buttonRefresh.UseVisualStyleBackColor = true;
 			this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
 			// 
@@ -228,7 +233,7 @@
 			// labelTotal
 			// 
 			this.labelTotal.AutoSize = true;
-			this.labelTotal.Location = new System.Drawing.Point(255, 90);
+			this.labelTotal.Location = new System.Drawing.Point(174, 90);
 			this.labelTotal.Name = "labelTotal";
 			this.labelTotal.Size = new System.Drawing.Size(86, 12);
 			this.labelTotal.TabIndex = 11;
@@ -290,7 +295,7 @@
 			// 
 			this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
 			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.RefreshToolStripMenuItem.Text = "刷新";
+			this.RefreshToolStripMenuItem.Text = "更新法條內容";
 			this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
@@ -352,63 +357,63 @@
 			// word8
 			// 
 			this.word8.Name = "word8";
-			this.word8.Size = new System.Drawing.Size(152, 22);
+			this.word8.Size = new System.Drawing.Size(98, 22);
 			this.word8.Text = "8";
 			this.word8.Click += new System.EventHandler(this.word8_Click);
 			// 
 			// word10
 			// 
 			this.word10.Name = "word10";
-			this.word10.Size = new System.Drawing.Size(152, 22);
+			this.word10.Size = new System.Drawing.Size(98, 22);
 			this.word10.Text = "10";
 			this.word10.Click += new System.EventHandler(this.word10_Click);
 			// 
 			// word12
 			// 
 			this.word12.Name = "word12";
-			this.word12.Size = new System.Drawing.Size(152, 22);
+			this.word12.Size = new System.Drawing.Size(98, 22);
 			this.word12.Text = "12";
 			this.word12.Click += new System.EventHandler(this.word12_Click);
 			// 
 			// word15
 			// 
 			this.word15.Name = "word15";
-			this.word15.Size = new System.Drawing.Size(152, 22);
+			this.word15.Size = new System.Drawing.Size(98, 22);
 			this.word15.Text = "15";
 			this.word15.Click += new System.EventHandler(this.word15_Click);
 			// 
 			// word20
 			// 
 			this.word20.Name = "word20";
-			this.word20.Size = new System.Drawing.Size(152, 22);
+			this.word20.Size = new System.Drawing.Size(98, 22);
 			this.word20.Text = "20";
 			this.word20.Click += new System.EventHandler(this.word20_Click);
 			// 
 			// word28
 			// 
 			this.word28.Name = "word28";
-			this.word28.Size = new System.Drawing.Size(152, 22);
+			this.word28.Size = new System.Drawing.Size(98, 22);
 			this.word28.Text = "28";
 			this.word28.Click += new System.EventHandler(this.word28_Click);
 			// 
 			// word36
 			// 
 			this.word36.Name = "word36";
-			this.word36.Size = new System.Drawing.Size(152, 22);
+			this.word36.Size = new System.Drawing.Size(98, 22);
 			this.word36.Text = "36";
 			this.word36.Click += new System.EventHandler(this.word36_Click);
 			// 
 			// word72
 			// 
 			this.word72.Name = "word72";
-			this.word72.Size = new System.Drawing.Size(152, 22);
+			this.word72.Size = new System.Drawing.Size(98, 22);
 			this.word72.Text = "72";
 			this.word72.Click += new System.EventHandler(this.word72_Click);
 			// 
 			// SetFontToolStripMenuItem
 			// 
 			this.SetFontToolStripMenuItem.Name = "SetFontToolStripMenuItem";
-			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
 			this.SetFontToolStripMenuItem.Text = "自訂";
 			this.SetFontToolStripMenuItem.Click += new System.EventHandler(this.SetFontToolStripMenuItem_Click);
 			// 
@@ -433,15 +438,49 @@
 			// 
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
 			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 1;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Controls.Add(this.buttonRefresh, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.labelLastUpdate, 0, 2);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(420, 27);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 3;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(134, 75);
+			this.tableLayoutPanel1.TabIndex = 13;
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new System.Drawing.Point(3, 37);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(89, 12);
+			label2.TabIndex = 10;
+			label2.Text = "最後更新時間：";
+			// 
+			// labelLastUpdate
+			// 
+			this.labelLastUpdate.Location = new System.Drawing.Point(3, 55);
+			this.labelLastUpdate.Name = "labelLastUpdate";
+			this.labelLastUpdate.Size = new System.Drawing.Size(128, 20);
+			this.labelLastUpdate.TabIndex = 11;
+			this.labelLastUpdate.Text = "label3";
+			this.labelLastUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(622, 409);
+			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.labelTotal);
 			this.Controls.Add(this.checkBoxConsistent);
-			this.Controls.Add(this.buttonRefresh);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.comboBoxChoice);
@@ -456,6 +495,8 @@
 			this.contextMenuStrip1.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -507,6 +548,8 @@
 		private System.Windows.Forms.PrintDialog printDialog1;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 		private System.Drawing.Printing.PrintDocument printDocument1;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Label labelLastUpdate;
 	}
 }
 

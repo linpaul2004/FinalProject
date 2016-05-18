@@ -83,14 +83,14 @@ namespace FinalProject
 					if (name.Exists == true)
 					{
 						name.Delete();
+						parent.address[0].RemoveAt(checkedListBox1.SelectedIndices[0]);
+						parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
 					}
 				}
 				else
 				{
 					file.Delete();
 				}
-				parent.address[0].RemoveAt(checkedListBox1.SelectedIndices[0]);
-				parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
 				parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.SelectedIndices[0]]);
 				checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndices[0]);
 				parent.DataStore();
