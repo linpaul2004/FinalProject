@@ -21,6 +21,7 @@ namespace FinalProject
 		private FormAdd formAdd = new FormAdd();
 		private FormLike formLike = new FormLike();
 		private WordFont wordfont = new WordFont();
+		private UserDefDic userdefdic = new UserDefDic();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
@@ -395,6 +396,17 @@ namespace FinalProject
 				text += "\n";
 			}
 			e.Graphics.DrawString(text, new System.Drawing.Font("新細明體", 9, FontStyle.Regular), System.Drawing.Brushes.Black, 10, 10);
+		}
+
+		private void UserDefinedToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			string[] tmp = new string[address[0].Count];
+			for (int i = 0; i < address[0].Count; i++)
+			{
+				tmp[i] = address[0][i];
+			}
+			userdefdic.con = tmp;
+			userdefdic.ShowDialog(this);
 		}
 	}
 }
