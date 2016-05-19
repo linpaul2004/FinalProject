@@ -17,11 +17,14 @@ namespace FinalProject
 {
 	public partial class Form1 : Form
 	{
-		private int selectRow, selectCol;
+		private int selectRow, selectCol, mode;
 		private FormAdd formAdd = new FormAdd();
 		private FormLike formLike = new FormLike();
 		private WordFont wordfont = new WordFont();
 		private UserDefDic userdefdic = new UserDefDic();
+		private CheckBox[] ch;
+		FlowLayoutPanel lp = new FlowLayoutPanel();
+		ToolStripDropDown tool = new ToolStripDropDown();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
@@ -138,6 +141,19 @@ namespace FinalProject
 			dataGridView1.ContextMenuStrip = contextMenuStrip1;
 			selectCol = selectRow = -1;
 			this.RefreshUpdateTime();
+			multisearch.Visible = false;
+			multichoice.Visible = false;
+			lp.BackColor = Color.Transparent;
+			lp.AutoScroll = true;
+			lp.FlowDirection = FlowDirection.TopDown;
+			lp.WrapContents = false;
+			lp.Size = new Size(400, 300);
+			lp.Dock = DockStyle.Fill;
+			ToolStripControlHost host = new ToolStripControlHost(lp);
+			host.Dock = DockStyle.Fill;
+			tool.Items.Add(host);
+			tool.Visible = false;
+			mode = 0;
 		}
 
 		private void RefreshUpdateTime()
@@ -493,6 +509,67 @@ namespace FinalProject
 			}
 			userdefdic.con = tmp;
 			userdefdic.ShowDialog(this);
+		}
+
+		private void change_Click(object sender, EventArgs e)
+		{
+			if (buttonSearch.Visible == false)
+			{
+				multisearch.Visible = false;
+				buttonSearch.Visible = true;
+				comboBoxChoice.Visible = true;
+				multichoice.Visible = false;
+			}
+			else
+			{
+				multisearch.Visible = true;
+				buttonSearch.Visible = false;
+				comboBoxChoice.Visible = false;
+				multichoice.Visible = true;
+			}
+		}
+
+		private void multichoice_Click(object sender, EventArgs e)
+		{
+			if (mode == 1)
+			{
+				mode = 0;
+			}
+			else
+			{
+				ch = new CheckBox[comboBoxChoice.Items.Count];
+				mode = 1;
+				lp.Controls.Clear();
+				for (int i = 0; i < comboBoxChoice.Items.Count; i++)
+				{
+					ch[i] = new CheckBox();
+					ch[i].Text = comboBoxChoice.Items[i].ToString();
+					lp.Controls.Add(ch[i]);
+				}
+				tool.Show(multichoice, new Point(0, this.multichoice.Height));
+			}
+		}
+
+		private void multisearch_Click(object sender, EventArgs e)
+		{
+			dataGridView1.Rows.Clear();
+			for (int i = 0; i < lp.Controls.Count; i++)
+			{
+				if (ch[i].Checked == true)
+				{
+					FileInfo file = new FileInfo("../../Law" + i + ".txt");
+					if (file.Exists == false)
+					{
+						continue;
+					}
+					else
+					{
+						StreamReader sw = new StreamReader("../../Law" + i + ".txt");
+						string result = sw.ReadToEnd();
+						Search(result, ch[i].Text, 0);
+					}
+				}
+			}
 		}
 	}
 }
