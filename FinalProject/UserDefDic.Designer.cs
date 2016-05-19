@@ -41,12 +41,14 @@
 			this.addition = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.back = new System.Windows.Forms.Button();
+			this.exist = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// checkedListBox1
 			// 
 			this.checkedListBox1.FormattingEnabled = true;
-			this.checkedListBox1.Location = new System.Drawing.Point(313, 40);
+			this.checkedListBox1.Location = new System.Drawing.Point(21, 92);
 			this.checkedListBox1.Name = "checkedListBox1";
 			this.checkedListBox1.Size = new System.Drawing.Size(176, 174);
 			this.checkedListBox1.TabIndex = 0;
@@ -54,7 +56,7 @@
 			// dicname
 			// 
 			this.dicname.AutoSize = true;
-			this.dicname.Location = new System.Drawing.Point(41, 13);
+			this.dicname.Location = new System.Drawing.Point(19, 20);
 			this.dicname.Name = "dicname";
 			this.dicname.Size = new System.Drawing.Size(29, 12);
 			this.dicname.TabIndex = 1;
@@ -62,14 +64,14 @@
 			// 
 			// Dic
 			// 
-			this.Dic.Location = new System.Drawing.Point(76, 10);
+			this.Dic.Location = new System.Drawing.Point(65, 17);
 			this.Dic.Name = "Dic";
 			this.Dic.Size = new System.Drawing.Size(153, 22);
 			this.Dic.TabIndex = 2;
 			// 
 			// check
 			// 
-			this.check.Location = new System.Drawing.Point(103, 232);
+			this.check.Location = new System.Drawing.Point(21, 272);
 			this.check.Name = "check";
 			this.check.Size = new System.Drawing.Size(75, 23);
 			this.check.TabIndex = 3;
@@ -79,7 +81,7 @@
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(624, 232);
+			this.buttonOK.Location = new System.Drawing.Point(342, 272);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 4;
@@ -89,14 +91,14 @@
 			// checkedListBox2
 			// 
 			this.checkedListBox2.FormattingEnabled = true;
-			this.checkedListBox2.Location = new System.Drawing.Point(533, 40);
+			this.checkedListBox2.Location = new System.Drawing.Point(241, 92);
 			this.checkedListBox2.Name = "checkedListBox2";
 			this.checkedListBox2.Size = new System.Drawing.Size(176, 174);
 			this.checkedListBox2.TabIndex = 5;
 			// 
 			// add
 			// 
-			this.add.Location = new System.Drawing.Point(495, 77);
+			this.add.Location = new System.Drawing.Point(203, 150);
 			this.add.Name = "add";
 			this.add.Size = new System.Drawing.Size(32, 23);
 			this.add.TabIndex = 6;
@@ -106,7 +108,7 @@
 			// 
 			// del
 			// 
-			this.del.Location = new System.Drawing.Point(495, 139);
+			this.del.Location = new System.Drawing.Point(203, 179);
 			this.del.Name = "del";
 			this.del.Size = new System.Drawing.Size(32, 23);
 			this.del.TabIndex = 7;
@@ -117,7 +119,7 @@
 			// comboBox1
 			// 
 			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(103, 57);
+			this.comboBox1.Location = new System.Drawing.Point(97, 17);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 20);
 			this.comboBox1.TabIndex = 8;
@@ -125,7 +127,7 @@
 			// 
 			// fix
 			// 
-			this.fix.Location = new System.Drawing.Point(313, 232);
+			this.fix.Location = new System.Drawing.Point(241, 273);
 			this.fix.Name = "fix";
 			this.fix.Size = new System.Drawing.Size(75, 23);
 			this.fix.TabIndex = 9;
@@ -135,7 +137,7 @@
 			// 
 			// addition
 			// 
-			this.addition.Location = new System.Drawing.Point(103, 232);
+			this.addition.Location = new System.Drawing.Point(21, 273);
 			this.addition.Name = "addition";
 			this.addition.Size = new System.Drawing.Size(75, 23);
 			this.addition.TabIndex = 10;
@@ -146,7 +148,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(313, 12);
+			this.label1.Location = new System.Drawing.Point(17, 77);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(53, 12);
 			this.label1.TabIndex = 11;
@@ -155,17 +157,38 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(531, 13);
+			this.label2.Location = new System.Drawing.Point(239, 77);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(53, 12);
 			this.label2.TabIndex = 12;
 			this.label2.Text = "所有項目";
 			// 
+			// back
+			// 
+			this.back.Location = new System.Drawing.Point(122, 273);
+			this.back.Name = "back";
+			this.back.Size = new System.Drawing.Size(75, 23);
+			this.back.TabIndex = 13;
+			this.back.Text = "取消";
+			this.back.UseVisualStyleBackColor = true;
+			this.back.Click += new System.EventHandler(this.back_Click);
+			// 
+			// exist
+			// 
+			this.exist.AutoSize = true;
+			this.exist.Location = new System.Drawing.Point(19, 20);
+			this.exist.Name = "exist";
+			this.exist.Size = new System.Drawing.Size(65, 12);
+			this.exist.TabIndex = 14;
+			this.exist.Text = "自定義法典";
+			// 
 			// UserDefDic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(727, 267);
+			this.ClientSize = new System.Drawing.Size(435, 308);
+			this.Controls.Add(this.exist);
+			this.Controls.Add(this.back);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.addition);
@@ -183,7 +206,7 @@
 			this.MinimizeBox = false;
 			this.Name = "UserDefDic";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "自定義法典";
+			this.Text = "自定義法典 :";
 			this.Load += new System.EventHandler(this.UserDefDic_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -205,5 +228,7 @@
 		private System.Windows.Forms.Button addition;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Button back;
+		private System.Windows.Forms.Label exist;
 	}
 }
