@@ -502,12 +502,7 @@ namespace FinalProject
 
 		private void UserDefinedToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string[] tmp = new string[address[0].Count];
-			for (int i = 0; i < address[0].Count; i++)
-			{
-				tmp[i] = address[0][i];
-			}
-			userdefdic.con = tmp;
+			userdefdic.con = address[0].ToArray();
 			userdefdic.ShowDialog(this);
 		}
 

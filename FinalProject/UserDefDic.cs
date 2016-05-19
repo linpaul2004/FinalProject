@@ -23,16 +23,16 @@ namespace FinalProject
 
 		private void check_Click(object sender, EventArgs e)
 		{
+			Form1 form = (Form1)this.Owner;
 			name = Dic.Text;
-			for (int i = 0; i < checkedListBox1.Items.Count; i++)
+			for (int i = 0; i < form.address[0].Count; i++)
 			{
-				if (name == checkedListBox1.Items[i].ToString())
+				if (name == form.address[0][i])
 				{
 					MessageBox.Show("Error", "這個名字已經被使用", MessageBoxButtons.OK);
 					return;
 				}
 			}
-			Form1 form = (Form1)this.Owner;
 			int num = form.address[0].Count;
 			FileInfo file = new FileInfo("../../" + name + ".txt");
 			if (file.Exists == false)
@@ -43,9 +43,9 @@ namespace FinalProject
 
 			StreamWriter fout = new StreamWriter("../../" + name + ".txt");
 			fout.WriteLine("Mixed");
-			for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
+			for (int i = 0; i < checkedListBox1.Items.Count; i++)
 			{
-				fout.WriteLine(checkedListBox1.CheckedItems[i].ToString());
+				fout.WriteLine(checkedListBox1.Items[i].ToString());
 			}
 
 			fout.Flush();
@@ -59,6 +59,7 @@ namespace FinalProject
 
 			StreamWriter write = new StreamWriter("../../MixedLaw.txt", true);
 			write.WriteLine(name);
+			write.Flush();
 			write.Close();
 			comboBox1.Items.Add(name);
 		}
@@ -92,10 +93,6 @@ namespace FinalProject
 				comboBox1.Items.Add(tmp);
 				tmp = sw.ReadLine();
 			}
-			if (comboBox1.Items.Count > 0)
-			{
-				comboBox1.SelectedIndex = 0;
-			}
 		}
 
 		private void addition_Click(object sender, EventArgs e)
@@ -103,6 +100,22 @@ namespace FinalProject
 			check.Visible = true;
 			addition.Visible = false;
 			comboBox1.Visible = false;
+			dicname.Visible = true;
+			Dic.Visible = true;
+			checkedListBox1.Items.Clear();
+			checkedListBox2.Items.Clear();
+			for (int i = 0; i < con.Length; i++)
+			{
+				checkedListBox2.Items.Add(con[i]);
+				for (int j = 0; j < check2.Length; j++)
+				{
+					if (con[i] == check2[j])
+					{
+						checkedListBox2.Items.Remove(con[i]);
+						break;
+					}
+				}
+			}
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,6 +126,7 @@ namespace FinalProject
 			string now = read.ReadLine();
 			while (true)
 			{
+				now = read.ReadLine();
 				if (now == null)
 				{
 					break;
@@ -136,7 +150,7 @@ namespace FinalProject
 					}
 				}
 
-				for(int j = 0;j<checkedListBox1.Items.Count;i++)
+				for(int j = 0;j<checkedListBox1.Items.Count;j++)
 				{
 					if(form.address[0][i] == checkedListBox1.Items[j].ToString())
 					{
@@ -144,6 +158,49 @@ namespace FinalProject
 					}
 				}
 			}
+		}
+
+		private void add_Click(object sender, EventArgs e)
+		{
+			for (int i = 0; i < checkedListBox2.CheckedItems.Count; i++)
+			{
+				checkedListBox1.Items.Add(checkedListBox2.CheckedItems[i]);
+			}
+
+			string[] del = new string[checkedListBox2.CheckedItems.Count];
+			checkedListBox2.CheckedItems.CopyTo(del, 0);
+			for (int i = 0; i < del.Length; i++)
+			{
+				checkedListBox2.Items.Remove(del[i]);
+			}
+		}
+
+		private void del_Click(object sender, EventArgs e)
+		{
+			for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
+			{
+				checkedListBox2.Items.Add(checkedListBox1.CheckedItems[i]);
+			}
+
+			string[] del = new string[checkedListBox1.CheckedItems.Count];
+			checkedListBox1.CheckedItems.CopyTo(del, 0);
+			for (int i = 0; i < del.Length; i++)
+			{
+				checkedListBox1.Items.Remove(del[i]);
+			}
+		}
+
+		private void fix_Click(object sender, EventArgs e)
+		{
+			StreamWriter write = new StreamWriter("../../" + comboBox1.SelectedItem.ToString() + ".txt");
+			write.WriteLine("Mixed");
+			for (int i = 0; i < checkedListBox1.Items.Count; i++)
+			{
+				write.WriteLine(checkedListBox1.Items[i]);
+			}
+
+			write.Flush();
+			write.Close();
 		}
 	}
 }

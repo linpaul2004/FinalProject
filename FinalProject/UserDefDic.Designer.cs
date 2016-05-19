@@ -102,6 +102,7 @@
 			this.add.TabIndex = 6;
 			this.add.Text = "<<";
 			this.add.UseVisualStyleBackColor = true;
+			this.add.Click += new System.EventHandler(this.add_Click);
 			// 
 			// del
 			// 
@@ -111,11 +112,12 @@
 			this.del.TabIndex = 7;
 			this.del.Text = ">>";
 			this.del.UseVisualStyleBackColor = true;
+			this.del.Click += new System.EventHandler(this.del_Click);
 			// 
 			// comboBox1
 			// 
 			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(76, 56);
+			this.comboBox1.Location = new System.Drawing.Point(103, 57);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 20);
 			this.comboBox1.TabIndex = 8;
@@ -129,6 +131,7 @@
 			this.fix.TabIndex = 9;
 			this.fix.Text = "修改";
 			this.fix.UseVisualStyleBackColor = true;
+			this.fix.Click += new System.EventHandler(this.fix_Click);
 			// 
 			// addition
 			// 

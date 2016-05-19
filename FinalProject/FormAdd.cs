@@ -74,27 +74,59 @@ namespace FinalProject
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
 			Form1 parent = (Form1)this.Owner;
-			while (checkedListBox1.SelectedIndices.Count > 0)
+
+			FileInfo check = new FileInfo("../../MixedLaw.txt");
+			if (check.Exists == false)
 			{
-				FileInfo file = new FileInfo("../../Law" + checkedListBox1.SelectedIndices[0].ToString() + ".txt");
-				if (file.Exists == false)
-				{
-					FileInfo name = new FileInfo("../../" + (parent.address[0][checkedListBox1.SelectedIndices[0]]).ToString() + ".txt");
-					if (name.Exists == true)
-					{
-						name.Delete();
-						parent.address[0].RemoveAt(checkedListBox1.SelectedIndices[0]);
-						parent.address[1].RemoveAt(checkedListBox1.SelectedIndices[0]);
-					}
-				}
-				else
-				{
-					file.Delete();
-				}
-				parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.SelectedIndices[0]]);
-				checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndices[0]);
-				parent.DataStore();
+				FileStream fs = check.Create();
+				fs.Close();
 			}
+
+			StreamReader read = new StreamReader("../../MixedLaw.txt");
+			List<string> mix = new List<string>(0);
+			while (true)
+			{
+				string tmp = read.ReadLine();
+				if (tmp == null) break;
+				mix.Add(tmp);
+			}
+			read.Close();
+
+				while (checkedListBox1.CheckedIndices.Count > 0)
+				{
+					FileInfo file = new FileInfo("../../Law" + checkedListBox1.CheckedIndices[0].ToString() + ".txt");
+					if (file.Exists == false)
+					{
+						FileInfo name = new FileInfo("../../" + (parent.address[0][checkedListBox1.CheckedIndices[0]]).ToString() + ".txt");
+						if (name.Exists == true)
+						{
+							name.Delete();
+							parent.address[0].RemoveAt(checkedListBox1.CheckedIndices[0]);
+							parent.address[1].RemoveAt(checkedListBox1.CheckedIndices[0]);
+						}
+					}
+					else
+					{
+						file.Delete();
+					}
+					for (int i = 0; i < mix.Count; i++)
+					{
+						if ((checkedListBox1.Items[checkedListBox1.CheckedIndices[0]].ToString()) == mix[i].ToString())
+						{
+							mix.Remove(mix[i]);
+						}
+					}
+					parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.CheckedIndices[0]]);
+					checkedListBox1.Items.RemoveAt(checkedListBox1.CheckedIndices[0]);
+					parent.DataStore();
+				}
+				StreamWriter write = new StreamWriter("../../MixedLaw.txt");
+				for (int i = 0; i < mix.Count; i++)
+				{
+					write.WriteLine(mix[i]);
+				}
+				write.Flush();
+				write.Close();
 		}
 	}
 }
