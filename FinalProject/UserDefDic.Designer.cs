@@ -33,12 +33,20 @@
 			this.Dic = new System.Windows.Forms.TextBox();
 			this.check = new System.Windows.Forms.Button();
 			this.buttonOK = new System.Windows.Forms.Button();
+			this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+			this.add = new System.Windows.Forms.Button();
+			this.del = new System.Windows.Forms.Button();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.fix = new System.Windows.Forms.Button();
+			this.addition = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// checkedListBox1
 			// 
 			this.checkedListBox1.FormattingEnabled = true;
-			this.checkedListBox1.Location = new System.Drawing.Point(286, 10);
+			this.checkedListBox1.Location = new System.Drawing.Point(313, 40);
 			this.checkedListBox1.Name = "checkedListBox1";
 			this.checkedListBox1.Size = new System.Drawing.Size(176, 174);
 			this.checkedListBox1.TabIndex = 0;
@@ -54,14 +62,14 @@
 			// 
 			// Dic
 			// 
-			this.Dic.Location = new System.Drawing.Point(88, 10);
+			this.Dic.Location = new System.Drawing.Point(76, 10);
 			this.Dic.Name = "Dic";
 			this.Dic.Size = new System.Drawing.Size(153, 22);
 			this.Dic.TabIndex = 2;
 			// 
 			// check
 			// 
-			this.check.Location = new System.Drawing.Point(88, 161);
+			this.check.Location = new System.Drawing.Point(103, 232);
 			this.check.Name = "check";
 			this.check.Size = new System.Drawing.Size(75, 23);
 			this.check.TabIndex = 3;
@@ -71,18 +79,98 @@
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(210, 206);
+			this.buttonOK.Location = new System.Drawing.Point(624, 232);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 4;
 			this.buttonOK.Text = "返回";
 			this.buttonOK.UseVisualStyleBackColor = true;
 			// 
+			// checkedListBox2
+			// 
+			this.checkedListBox2.FormattingEnabled = true;
+			this.checkedListBox2.Location = new System.Drawing.Point(533, 40);
+			this.checkedListBox2.Name = "checkedListBox2";
+			this.checkedListBox2.Size = new System.Drawing.Size(176, 174);
+			this.checkedListBox2.TabIndex = 5;
+			// 
+			// add
+			// 
+			this.add.Location = new System.Drawing.Point(495, 77);
+			this.add.Name = "add";
+			this.add.Size = new System.Drawing.Size(32, 23);
+			this.add.TabIndex = 6;
+			this.add.Text = "<<";
+			this.add.UseVisualStyleBackColor = true;
+			// 
+			// del
+			// 
+			this.del.Location = new System.Drawing.Point(495, 139);
+			this.del.Name = "del";
+			this.del.Size = new System.Drawing.Size(32, 23);
+			this.del.TabIndex = 7;
+			this.del.Text = ">>";
+			this.del.UseVisualStyleBackColor = true;
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(76, 56);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(121, 20);
+			this.comboBox1.TabIndex = 8;
+			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+			// 
+			// fix
+			// 
+			this.fix.Location = new System.Drawing.Point(313, 232);
+			this.fix.Name = "fix";
+			this.fix.Size = new System.Drawing.Size(75, 23);
+			this.fix.TabIndex = 9;
+			this.fix.Text = "修改";
+			this.fix.UseVisualStyleBackColor = true;
+			// 
+			// addition
+			// 
+			this.addition.Location = new System.Drawing.Point(103, 232);
+			this.addition.Name = "addition";
+			this.addition.Size = new System.Drawing.Size(75, 23);
+			this.addition.TabIndex = 10;
+			this.addition.Text = "新增";
+			this.addition.UseVisualStyleBackColor = true;
+			this.addition.Click += new System.EventHandler(this.addition_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(313, 12);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(53, 12);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "目前項目";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(531, 13);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(53, 12);
+			this.label2.TabIndex = 12;
+			this.label2.Text = "所有項目";
+			// 
 			// UserDefDic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(474, 237);
+			this.ClientSize = new System.Drawing.Size(727, 267);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.addition);
+			this.Controls.Add(this.fix);
+			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.del);
+			this.Controls.Add(this.add);
+			this.Controls.Add(this.checkedListBox2);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.check);
 			this.Controls.Add(this.Dic);
@@ -106,5 +194,13 @@
 		private System.Windows.Forms.TextBox Dic;
 		private System.Windows.Forms.Button check;
 		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.CheckedListBox checkedListBox2;
+		private System.Windows.Forms.Button add;
+		private System.Windows.Forms.Button del;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Button fix;
+		private System.Windows.Forms.Button addition;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
 	}
 }
