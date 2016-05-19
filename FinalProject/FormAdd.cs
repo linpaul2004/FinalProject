@@ -104,11 +104,18 @@ namespace FinalProject
 							parent.address[0].RemoveAt(checkedListBox1.CheckedIndices[0]);
 							parent.address[1].RemoveAt(checkedListBox1.CheckedIndices[0]);
 						}
+						else
+						{
+							MessageBox.Show("", "", MessageBoxButtons.OK);
+						}
 					}
 					else
 					{
 						file.Delete();
+						parent.address[0].RemoveAt(checkedListBox1.CheckedIndices[0]);
+						parent.address[1].RemoveAt(checkedListBox1.CheckedIndices[0]);
 					}
+
 					for (int i = 0; i < mix.Count; i++)
 					{
 						if ((checkedListBox1.Items[checkedListBox1.CheckedIndices[0]].ToString()) == mix[i].ToString())
@@ -116,6 +123,7 @@ namespace FinalProject
 							mix.Remove(mix[i]);
 						}
 					}
+
 					parent.comboBoxChoice.Items.Remove(checkedListBox1.Items[checkedListBox1.CheckedIndices[0]]);
 					checkedListBox1.Items.RemoveAt(checkedListBox1.CheckedIndices[0]);
 					parent.DataStore();
