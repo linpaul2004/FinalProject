@@ -575,7 +575,7 @@ namespace FinalProject
 				{
 					iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(saveFileDialog1.FileName, FileMode.Create));
 					document.Open();
-					iTextSharp.text.Font font=new iTextSharp.text.Font(iTextSharp.text.pdf.BaseFont.CreateFont(@"C:\Users\USER\Documents\Visual Studio 2013\Projects\FinalProject\FinalProject\kaiu.ttf", iTextSharp.text.pdf.BaseFont.IDENTITY_H, iTextSharp.text.pdf.BaseFont.NOT_EMBEDDED));
+					iTextSharp.text.Font font=new iTextSharp.text.Font(iTextSharp.text.pdf.BaseFont.CreateFont("../../kaiu.ttf", iTextSharp.text.pdf.BaseFont.IDENTITY_H, iTextSharp.text.pdf.BaseFont.NOT_EMBEDDED));
 					document.Add(new iTextSharp.text.Paragraph("搜尋字串：" + textSearch.Text, font));
 					for (int i = 0; i < dataGridView1.Rows.Count; i++)
 					{
