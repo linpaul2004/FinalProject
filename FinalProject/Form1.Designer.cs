@@ -175,13 +175,13 @@
             this.CopyToolStripMenuItem,
             this.SetToolStripMenuItem1});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(167, 48);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(164, 48);
 			// 
 			// CopyToolStripMenuItem
 			// 
 			this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
 			this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+			this.CopyToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
 			this.CopyToolStripMenuItem.Text = "複製(C)";
 			this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 
@@ -189,7 +189,7 @@
 			// 
 			this.SetToolStripMenuItem1.Name = "SetToolStripMenuItem1";
 			this.SetToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-			this.SetToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+			this.SetToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
 			this.SetToolStripMenuItem1.Text = "我的最愛";
 			this.SetToolStripMenuItem1.Click += new System.EventHandler(this.SetToolStripMenuItem1_Click);
 			// 
@@ -271,13 +271,13 @@
             this.RefreshToolStripMenuItem,
             this.ExitToolStripMenuItem});
 			this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-			this.FileToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.FileToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.FileToolStripMenuItem.Text = "檔案";
 			// 
 			// PrintToolStripMenuItem
 			// 
 			this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.PrintToolStripMenuItem.Text = "列印";
 			this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
 			// 
@@ -287,7 +287,7 @@
             this.pdfToolStripMenuItem,
             this.txtToolStripMenuItem});
 			this.OutputToolStripMenuItem.Name = "OutputToolStripMenuItem";
-			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.OutputToolStripMenuItem.Text = "輸出到";
 			// 
 			// pdfToolStripMenuItem
@@ -295,6 +295,7 @@
 			this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
 			this.pdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.pdfToolStripMenuItem.Text = "PDF 檔 (.pdf)";
+			this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
 			// 
 			// txtToolStripMenuItem
 			// 
@@ -306,14 +307,14 @@
 			// RefreshToolStripMenuItem
 			// 
 			this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
-			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.RefreshToolStripMenuItem.Text = "更新法條內容";
 			this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.ExitToolStripMenuItem.Text = "離開";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -326,27 +327,27 @@
             this.FontToolStripMenuItem,
             this.ColorToolStripMenuItem});
 			this.OptionToolStripMenuItem.Name = "OptionToolStripMenuItem";
-			this.OptionToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.OptionToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.OptionToolStripMenuItem.Text = "設定";
 			// 
 			// LikeToolStripMenuItem
 			// 
 			this.LikeToolStripMenuItem.Name = "LikeToolStripMenuItem";
-			this.LikeToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.LikeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.LikeToolStripMenuItem.Text = "我的最愛";
 			this.LikeToolStripMenuItem.Click += new System.EventHandler(this.LikeToolStripMenuItem_Click);
 			// 
 			// UserDefinedToolStripMenuItem
 			// 
 			this.UserDefinedToolStripMenuItem.Name = "UserDefinedToolStripMenuItem";
-			this.UserDefinedToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.UserDefinedToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.UserDefinedToolStripMenuItem.Text = "自定義法典";
 			this.UserDefinedToolStripMenuItem.Click += new System.EventHandler(this.UserDefinedToolStripMenuItem_Click);
 			// 
 			// BackgroundToolStripMenuItem
 			// 
 			this.BackgroundToolStripMenuItem.Name = "BackgroundToolStripMenuItem";
-			this.BackgroundToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.BackgroundToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.BackgroundToolStripMenuItem.Text = "背景顏色";
 			this.BackgroundToolStripMenuItem.Click += new System.EventHandler(this.BackgroundToolStripMenuItem_Click);
 			// 
@@ -363,83 +364,83 @@
             this.word72,
             this.SetFontToolStripMenuItem});
 			this.FontToolStripMenuItem.Name = "FontToolStripMenuItem";
-			this.FontToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.FontToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.FontToolStripMenuItem.Text = "字體大小";
 			// 
 			// word8
 			// 
 			this.word8.Name = "word8";
-			this.word8.Size = new System.Drawing.Size(100, 22);
+			this.word8.Size = new System.Drawing.Size(98, 22);
 			this.word8.Text = "8";
 			this.word8.Click += new System.EventHandler(this.word8_Click);
 			// 
 			// word10
 			// 
 			this.word10.Name = "word10";
-			this.word10.Size = new System.Drawing.Size(100, 22);
+			this.word10.Size = new System.Drawing.Size(98, 22);
 			this.word10.Text = "10";
 			this.word10.Click += new System.EventHandler(this.word10_Click);
 			// 
 			// word12
 			// 
 			this.word12.Name = "word12";
-			this.word12.Size = new System.Drawing.Size(100, 22);
+			this.word12.Size = new System.Drawing.Size(98, 22);
 			this.word12.Text = "12";
 			this.word12.Click += new System.EventHandler(this.word12_Click);
 			// 
 			// word15
 			// 
 			this.word15.Name = "word15";
-			this.word15.Size = new System.Drawing.Size(100, 22);
+			this.word15.Size = new System.Drawing.Size(98, 22);
 			this.word15.Text = "15";
 			this.word15.Click += new System.EventHandler(this.word15_Click);
 			// 
 			// word20
 			// 
 			this.word20.Name = "word20";
-			this.word20.Size = new System.Drawing.Size(100, 22);
+			this.word20.Size = new System.Drawing.Size(98, 22);
 			this.word20.Text = "20";
 			this.word20.Click += new System.EventHandler(this.word20_Click);
 			// 
 			// word28
 			// 
 			this.word28.Name = "word28";
-			this.word28.Size = new System.Drawing.Size(100, 22);
+			this.word28.Size = new System.Drawing.Size(98, 22);
 			this.word28.Text = "28";
 			this.word28.Click += new System.EventHandler(this.word28_Click);
 			// 
 			// word36
 			// 
 			this.word36.Name = "word36";
-			this.word36.Size = new System.Drawing.Size(100, 22);
+			this.word36.Size = new System.Drawing.Size(98, 22);
 			this.word36.Text = "36";
 			this.word36.Click += new System.EventHandler(this.word36_Click);
 			// 
 			// word72
 			// 
 			this.word72.Name = "word72";
-			this.word72.Size = new System.Drawing.Size(100, 22);
+			this.word72.Size = new System.Drawing.Size(98, 22);
 			this.word72.Text = "72";
 			this.word72.Click += new System.EventHandler(this.word72_Click);
 			// 
 			// SetFontToolStripMenuItem
 			// 
 			this.SetFontToolStripMenuItem.Name = "SetFontToolStripMenuItem";
-			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.SetFontToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
 			this.SetFontToolStripMenuItem.Text = "自訂";
 			this.SetFontToolStripMenuItem.Click += new System.EventHandler(this.SetFontToolStripMenuItem_Click);
 			// 
 			// ColorToolStripMenuItem
 			// 
 			this.ColorToolStripMenuItem.Name = "ColorToolStripMenuItem";
-			this.ColorToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.ColorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
 			this.ColorToolStripMenuItem.Text = "字體顏色";
 			this.ColorToolStripMenuItem.Click += new System.EventHandler(this.ColorToolStripMenuItem_Click);
 			// 
 			// HelpToolStripMenuItem
 			// 
 			this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.HelpToolStripMenuItem.Text = "說明";
 			// 
 			// printDialog1

@@ -565,5 +565,25 @@ namespace FinalProject
 				}
 			}
 		}
+
+		private void pdfToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			saveFileDialog1.Filter = "PDF File|*.pdf";
+			if (saveFileDialog1.ShowDialog(this) == DialogResult.OK && saveFileDialog1.FileName != "")
+			{
+				using (iTextSharp.text.Document document = new iTextSharp.text.Document())
+				{
+					iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(saveFileDialog1.FileName, FileMode.Create));
+					document.Open();
+					iTextSharp.text.Font font=new iTextSharp.text.Font(iTextSharp.text.pdf.BaseFont.CreateFont(@"C:\Users\USER\Documents\Visual Studio 2013\Projects\FinalProject\FinalProject\kaiu.ttf", iTextSharp.text.pdf.BaseFont.IDENTITY_H, iTextSharp.text.pdf.BaseFont.NOT_EMBEDDED));
+					document.Add(new iTextSharp.text.Paragraph("搜尋字串：" + textSearch.Text, font));
+					for (int i = 0; i < dataGridView1.Rows.Count; i++)
+					{
+						document.Add(new iTextSharp.text.Paragraph(dataGridView1.Rows[i].Cells[0].Value.ToString() + "\n第" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "條\n" + dataGridView1.Rows[i].Cells[2].Value.ToString().Trim(), font));
+					}
+					document.Close();
+				}
+			}
+		}
 	}
 }
