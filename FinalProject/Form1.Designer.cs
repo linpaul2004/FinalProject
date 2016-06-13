@@ -79,6 +79,7 @@
 			this.change = new System.Windows.Forms.Button();
 			this.multisearch = new System.Windows.Forms.Button();
 			this.multichoice = new System.Windows.Forms.Button();
+			this.buttonDisplayAll = new System.Windows.Forms.Button();
 			label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
@@ -115,7 +116,7 @@
 			// 
 			// buttonSearch
 			// 
-			this.buttonSearch.Location = new System.Drawing.Point(41, 85);
+			this.buttonSearch.Location = new System.Drawing.Point(64, 85);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(75, 23);
 			this.buttonSearch.TabIndex = 3;
@@ -203,7 +204,7 @@
 			// 
 			// buttonAdd
 			// 
-			this.buttonAdd.Location = new System.Drawing.Point(122, 85);
+			this.buttonAdd.Location = new System.Drawing.Point(145, 85);
 			this.buttonAdd.Name = "buttonAdd";
 			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
 			this.buttonAdd.TabIndex = 7;
@@ -245,7 +246,7 @@
 			// labelTotal
 			// 
 			this.labelTotal.AutoSize = true;
-			this.labelTotal.Location = new System.Drawing.Point(203, 90);
+			this.labelTotal.Location = new System.Drawing.Point(307, 90);
 			this.labelTotal.Name = "labelTotal";
 			this.labelTotal.Size = new System.Drawing.Size(86, 12);
 			this.labelTotal.TabIndex = 11;
@@ -277,7 +278,7 @@
 			// PrintToolStripMenuItem
 			// 
 			this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.PrintToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.PrintToolStripMenuItem.Text = "列印";
 			this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
 			// 
@@ -287,34 +288,34 @@
             this.pdfToolStripMenuItem,
             this.txtToolStripMenuItem});
 			this.OutputToolStripMenuItem.Name = "OutputToolStripMenuItem";
-			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.OutputToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.OutputToolStripMenuItem.Text = "輸出到";
 			// 
 			// pdfToolStripMenuItem
 			// 
 			this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-			this.pdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.pdfToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.pdfToolStripMenuItem.Text = "PDF 檔 (.pdf)";
 			this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
 			// 
 			// txtToolStripMenuItem
 			// 
 			this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
-			this.txtToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.txtToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.txtToolStripMenuItem.Text = "純文字檔 (.txt)";
 			this.txtToolStripMenuItem.Click += new System.EventHandler(this.txtToolStripMenuItem_Click);
 			// 
 			// RefreshToolStripMenuItem
 			// 
 			this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
-			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.RefreshToolStripMenuItem.Text = "更新法條內容";
 			this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.ExitToolStripMenuItem.Text = "離開";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -480,15 +481,15 @@
 			// 
 			this.change.Location = new System.Drawing.Point(12, 85);
 			this.change.Name = "change";
-			this.change.Size = new System.Drawing.Size(23, 23);
+			this.change.Size = new System.Drawing.Size(46, 23);
 			this.change.TabIndex = 15;
-			this.change.Text = "c";
+			this.change.Text = "切換";
 			this.change.UseVisualStyleBackColor = true;
 			this.change.Click += new System.EventHandler(this.change_Click);
 			// 
 			// multisearch
 			// 
-			this.multisearch.Location = new System.Drawing.Point(41, 85);
+			this.multisearch.Location = new System.Drawing.Point(64, 85);
 			this.multisearch.Name = "multisearch";
 			this.multisearch.Size = new System.Drawing.Size(75, 23);
 			this.multisearch.TabIndex = 16;
@@ -506,11 +507,22 @@
 			this.multichoice.UseVisualStyleBackColor = true;
 			this.multichoice.Click += new System.EventHandler(this.multichoice_Click);
 			// 
+			// buttonDisplayAll
+			// 
+			this.buttonDisplayAll.Location = new System.Drawing.Point(226, 85);
+			this.buttonDisplayAll.Name = "buttonDisplayAll";
+			this.buttonDisplayAll.Size = new System.Drawing.Size(75, 23);
+			this.buttonDisplayAll.TabIndex = 18;
+			this.buttonDisplayAll.Text = "顯示全部";
+			this.buttonDisplayAll.UseVisualStyleBackColor = true;
+			this.buttonDisplayAll.Click += new System.EventHandler(this.buttonDisplayAll_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(622, 409);
+			this.Controls.Add(this.buttonDisplayAll);
 			this.Controls.Add(this.multichoice);
 			this.Controls.Add(this.multisearch);
 			this.Controls.Add(this.change);
@@ -590,6 +602,7 @@
 		private System.Windows.Forms.Button change;
 		private System.Windows.Forms.Button multisearch;
 		private System.Windows.Forms.Button multichoice;
+		private System.Windows.Forms.Button buttonDisplayAll;
 	}
 }
 

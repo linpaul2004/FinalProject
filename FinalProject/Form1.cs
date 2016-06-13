@@ -23,16 +23,18 @@ namespace FinalProject
 		private WordFont wordfont = new WordFont();
 		private UserDefDic userdefdic = new UserDefDic();
 		private CheckBox[] ch;
-		FlowLayoutPanel lp = new FlowLayoutPanel();
-		ToolStripDropDown tool = new ToolStripDropDown();
+		private FlowLayoutPanel lp = new FlowLayoutPanel();
+		private ToolStripDropDown tool = new ToolStripDropDown();
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
 
-		private void Search(string result, string name, int index)
+		private void Search(string result)
 		{
 			try
 			{
+				int index=0;
+				string name = result.Substring(0, result.IndexOf(Environment.NewLine));
 				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
 				Match match = regex.Match(result);
 				while (true)
@@ -230,7 +232,6 @@ namespace FinalProject
 			if (tmp == "Mixed")
 			{
 				tmp = sw.ReadLine();
-				int index = 0;
 				while (true)
 				{
 					if (tmp == null || tmp == "")
@@ -246,7 +247,7 @@ namespace FinalProject
 							{
 								StreamReader re = new StreamReader("../../Law" + i + ".txt");
 								string result = re.ReadToEnd();
-								Search(result, comboBoxChoice.Items[i].ToString(), index);
+								Search(result);
 								re.Close();
 								break;
 							}
@@ -257,7 +258,7 @@ namespace FinalProject
 								{
 									StreamReader re = new StreamReader("../../" + comboBoxChoice.Items[i].ToString() + ".txt");
 									string result = re.ReadToEnd();
-									Search(result, comboBoxChoice.Items[i].ToString(), index);
+									Search(result);
 									re.Close();
 									break;
 								}
@@ -276,8 +277,7 @@ namespace FinalProject
 			else
 			{
 				String result = sw.ReadToEnd();
-				int index = 0;
-				Search(result, comboBoxChoice.SelectedItem.ToString(), index);
+				Search(tmp + Environment.NewLine + result);
 				sw.Close();
 			}
 
@@ -560,7 +560,7 @@ namespace FinalProject
 					{
 						StreamReader sw = new StreamReader("../../Law" + i + ".txt");
 						string result = sw.ReadToEnd();
-						Search(result, ch[i].Text, 0);
+						Search(result);
 					}
 				}
 			}
@@ -584,6 +584,11 @@ namespace FinalProject
 					document.Close();
 				}
 			}
+		}
+
+		private void buttonDisplayAll_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
