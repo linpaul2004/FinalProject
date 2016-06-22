@@ -25,6 +25,7 @@ namespace FinalProject
 		private CheckBox[] ch;
 		private FlowLayoutPanel lp = new FlowLayoutPanel();
 		private ToolStripDropDown tool = new ToolStripDropDown();
+		private bool isDisplayAll = false;
 		private string filepath = "../../LAddStore.txt";
 		private string pattern = "<a\\s(id=\"rtAlllaw_ctl\\d\\d_HYNo\"\\s)?href=\"LawSingle\\.aspx\\?Pcode=[A-Z][0-9]{7}&a?m?p?;?FLNO=(\\d+-?\\d*)[\\s]*\">[\\s\\S]+?<pre>([\\s\\S]+?)<\\/pre><\\/td>";
 		protected internal List<String>[] address=new List<String>[2];
@@ -33,7 +34,7 @@ namespace FinalProject
 		{
 			try
 			{
-				int index=0;
+				int index = -1;
 				string name = result.Substring(0, result.IndexOf(Environment.NewLine));
 				Regex regex = new Regex("(\\d+-?\\d*)([\\s\\S]+?)\\1");
 				Match match = regex.Match(result);
@@ -43,13 +44,15 @@ namespace FinalProject
 					{
 						break;
 					}
-					if (checkBoxConsistent.Checked)
+					if (isDisplayAll || checkBoxConsistent.Checked)
 					{
-						if (Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text)) == false)
+						Console.WriteLine("1");
+						if (!isDisplayAll && (Regex.IsMatch(match.Groups[2].ToString(), Regex.Escape(textSearch.Text)) == false))
 						{
 							match = match.NextMatch();
 							continue;
 						}
+						Console.WriteLine("2");
 					}
 					else
 					{
@@ -211,7 +214,7 @@ namespace FinalProject
 		private void button1_Click(object sender, EventArgs e)
 		{
 			textSearch.Text = textSearch.Text.Trim();
-			if(String.IsNullOrEmpty(textSearch.Text))
+			if(!isDisplayAll && String.IsNullOrEmpty(textSearch.Text))
 			{
 				return;
 			}
@@ -588,7 +591,16 @@ namespace FinalProject
 
 		private void buttonDisplayAll_Click(object sender, EventArgs e)
 		{
-
+			isDisplayAll = true;
+			if (multisearch.Visible)
+			{
+				multisearch.PerformClick();
+			}
+			else
+			{
+				buttonSearch.PerformClick();
+			}
+			isDisplayAll = false;
 		}
 	}
 }
